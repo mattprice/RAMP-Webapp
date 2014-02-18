@@ -1,0 +1,102 @@
+body {
+	width: 1280px;
+	height: 1024px;
+	margin: 0 auto;
+	text-align:center;
+	background-color:#48036F;
+}
+
+
+
+header, nav, footer {
+	text-align: center;
+	margin: auto;
+	background-color: #FFFF00; 
+	padding: 10px;
+}
+
+footer{
+	clear:both;
+}
+
+li {
+	display:inline;
+	padding: 5px;
+}
+#wrapper {
+
+	background-color: #AFEEEE;
+}
+
+#content {
+	border-style: groove;
+	overflow: auto;
+	height:100%;
+	background-color: #AFEEEE;
+}
+
+#secondary{
+	border-style: groove;
+	margin:0 auto;
+	padding: 35px;
+	height:70px;
+	text-align:center;
+	vertical-align:middle;
+	background-color:#0033ff;
+	}
+
+.tracks{
+	border-style: groove;
+	background-color: #ff0000;
+	width: 600px;
+	height: 100%;
+	float: left;
+	margin: 10px;
+}
+
+div[class^="track_"],div[class^="mixer_"]{
+	border-style: groove;
+	width:595px;
+	height: 40px;
+	
+}
+
+.mixers{
+	border-style: groove;
+	background-color: #00ff00;
+	width: 600px;
+	height: 100%;
+	float: left;
+	margin: 10px;
+}
+
+label{
+	display:inline-block;
+}
+
+fieldset{
+	border:0;
+}
+
+.equalizer{
+	float:left;
+	height:10px;
+	margin-right:22px;
+}
+
+.volume{
+	float:left;
+	height:15px;
+	margin-right:5px;
+}
+
+.effect{
+	float:left;
+	height:10px;
+	margin-right:10px;
+}
+
+
+
+
+
