@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>RAMP Echo Test</title>
+    <script type="text/javascript">
+        var websocket = null;
+
+        function init() {
+            writeToScreen("Beginning socket connection.");
+            websocket = new WebSocket("ws://ramp-server.embercode.com/echo");
+
+            websocket.onopen = function() {
+                writeToScreen("Connected to the socket server.");
+            };
+
+            websocket.onclose = function() {
+                writeToScreen("Disconnected from the socket server.");
+            };
+
+            websocket.onmessage = function(message) {
+                writeToScreen('<span style="color: blue;">RESPONSE: ' + message.data + '</span>');
+            };
+
+            websocket.onerror = function(error) {
+                writeToScreen('<span style="color: red;">ERROR:</span> ' + error);
+            };
+        }
+        window.addEventListener("load", init, false);
+
+        function doSend(message) {
+            writeToScreen("SENT: " + message);
+            websocket.send(message);
+        };
+
+        function writeToScreen(message) {
+            var pre = document.createElement("p");
+            pre.style.wordWrap = "break-word";
+            pre.innerHTML = message;
+            document.getElementById("output").appendChild(pre);
+        };
+
+        function sendMessage() {
+            var value = document.getElementById("sendMessage").value;
+            doSend(value);
+        };
+    </script>
+</head>
+<body>
+    <h2>RAMP Echo Test</h2>
+    <input id="sendMessage" size="35" value="Enter a message to send!">
+    <button id="send" onClick="javascript: sendMessage();">Send</button>
+    <div id="output"></div>
+</body>
+</html>
