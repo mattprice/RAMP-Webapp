@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 
 <html lang="en">
-	<head>
+	<header>
 		<meta charset="utf-8">
-		<title>Virtual Studio</title>
+			<!-- Title BEGIN -->
+			<title>Virtual Studio</title>
+			<!-- Title END -->
 		<link rel="stylesheet" href="css/style.css" type="text/css">
-	</head>
+	</header>
+	
+	<!-- ********************************************************************************* -->
+	
 	<body>
 		<!-- wrapper START -->
 		<div id="wrapper">
-			<header>
+
 				<h1>Virtual Studio</h1>		
 				<!-- Navigation Bar Links START-->
 				<nav> 
 					<ul> 
-						<li><a href="">Home</a></li><li><a href="">About Virtual Studio</a></li><li><a href="">Contact</a></li><li><a href="">Log in</a></li><li><a href="">Sign up FREE</a></li>
+						<li><a href="">Home</a></li>
+						<li><a href="">About Virtual Studio</a></li>
+						<li><a href="">Contact</a></li><li><a href="">Log in</a></li>
+						<li><a href="">Sign up</a></li>
 					</ul>
 				</nav>
 				<!-- Navigation Bar END -->
-				
+
 	<!-- ********************** NEED  TO PLACE A TOP CONTAINER **************** -->
 	
+	<!-- ********************************************************************************* -->
 	
 	<!-- .content START -->			
 	<div id="content">
+	
 		<!-- Left Section: Equalizers and Controls -->  
-		<div class="mixers">
+		<div id="MixerMenu">
 			<div class="mixer_1">
 				<form>
 					<fieldset> <!-- FIELDSET: Groups low/mid/high/vol/inc/mute Forms Together -->
@@ -86,7 +96,6 @@
 							<input type="checkbox" id="mute">
 							<label for="mute">mute</label>
 						</div>
-
 
 					</fieldset>
 				</form><!-- form -->			
@@ -152,7 +161,6 @@
 							<label for="mute">mute</label>
 						</div>
 
-
 					</fieldset>
 				</form><!-- form -->			
 			</div>
@@ -183,9 +191,7 @@
 						<div class="effect"> <!-- MUTE -->
 							<input type="checkbox" id="mute">
 							<label for="mute">mute</label>
-						</div>
-
-						
+						</div>						
 
 					</fieldset>
 				</form><!-- form -->			
@@ -218,9 +224,6 @@
 							<input type="checkbox" id="mute">
 							<label for="mute">mute</label>
 						</div>
-						
-
-
 					</fieldset>
 				</form><!-- form -->			
 			</div>
@@ -349,7 +352,6 @@
 							<label for="mute">mute</label>
 						</div>
 						
-
 					</fieldset>
 				</form><!-- form -->			
 			</div>
@@ -382,7 +384,6 @@
 							<label for="mute">mute</label>
 						</div>
 
-
 					</fieldset>
 				</form><!-- form -->			
 			</div>
@@ -413,9 +414,7 @@
 						<div class="effect"> <!-- MUTE -->
 							<input type="checkbox" id="mute">
 							<label for="mute">mute</label>
-						</div>
-			
-						
+						</div>	
 
 					</fieldset>
 				</form><!-- form -->			
@@ -449,7 +448,6 @@
 							<label for="mute">mute</label>
 						</div>
 
-
 					</fieldset>
 				</form><!-- form -->			
 			</div>
@@ -481,8 +479,6 @@
 							<input type="checkbox" id="mute">
 							<label for="mute">mute</label>
 						</div>
-						
-
 
 					</fieldset>
 				</form><!-- form -->			
@@ -580,8 +576,7 @@
 							<input type="checkbox" id="mute">
 							<label for="mute">mute</label>
 						</div>
-						
-
+	
 					</fieldset>
 				</form><!-- form -->			
 			</div>
@@ -613,8 +608,6 @@
 							<input type="checkbox" id="mute">
 							<label for="mute">mute</label>
 						</div>
-
-						
 
 					</fieldset>
 				</form><!-- form -->			
@@ -713,8 +706,6 @@
 							<label for="mute">mute</label>
 						</div>
 
-						
-
 					</fieldset>
 				</form><!-- form -->			
 			</div>
@@ -747,9 +738,6 @@
 							<label for="mute">mute</label>
 						</div>
 						
-
-						
-
 					</fieldset>
 				</form><!-- form -->			
 			</div>
@@ -782,9 +770,6 @@
 							<label for="mute">mute</label>
 						</div>
 						
-
-						
-
 					</fieldset>
 				</form><!-- form -->			
 			</div>
@@ -817,15 +802,15 @@
 							<label for="mute">mute</label>
 						</div>
 						
-
 					</fieldset>
 				</form><!-- form -->			
 			</div>
 
-		</div><!-- mixers -->
+		</div>
+		<!-- mixers -->
 		
-		<!-- Right Section: Track List -->
-		<div class="tracks">
+		<!-- Right Section: TrackListMenu BEGIN -->
+		<div id="TrackListMenu">
 
 			<div class="track_1">
 			
@@ -899,23 +884,63 @@
 			<div class="track_24">
 			
 			</div>
-		</div><!-- track -->	
+		
+		</div> 
+		<!-- TrackListMenu END -->	
+		
 	</div>
 	<!-- .content END -->
+
+<!-- ********************************************************************************* -->
 	
+	<!-- TRACK Play/Pause + TRACK Volume Slider-->
+		<div id="TrackControls">
+			<form>
+				<!-- GROUP Forms -->
+				<fieldset>
+				
+					<!-- MasterVolume Slider BEGIN -->
+					<div class="MasterVolume">
+						<label for="range">Volume: </label>
+						<input type="range" min="0" max="100" id="slider" value="10" name="volume">
+					</div>
+					<!-- MasterVolume Slider END -->
+						
+					
+					<!-- Play/Pause Track BEGIN -->
+					<div class="PlayPause">					
+						<button type="button" onclick="alert('playing music')">Play/Pause</button>
+					</div>
+					<!-- Play/Pause Track END -->
 	
-	<!-- TEST8******************* Bottom -->
-		<div id="secondary">Secondary Column</div>
-	<!-- TEST********************* END -->
+				
+		
+
+					<!-- Preset Select List BEGIN -->
+							<label>Select List: </label>
+							<select class = "myList">
+								<option value = "Rock">Rock</option>
+								<option value = "Pop">Pop</option>
+								<option value = "Folk">Folk</option>
+								<option value = "Jazz">Jazz</option>
+							</select>
+					</fieldset>
+			</form>
+					<!-- Preset Select List END -->
+
+		</div> 
+		<!-- Track Controls END -->
 	
-			<!-- footer Start -->
-			<footer>
-				University of Tennessee at Chattanooga, CPSC 2014 Senior Capstone Project
-			</footer>
-			<!-- footer END -->
+<!-- ********************************************************************************* -->
+	
+		<!-- footer Start -->
+		<footer>
+			University of Tennessee at Chattanooga, CPSC 2014 Senior Capstone Project
+		</footer>
+		<!-- footer END -->
 			
-		<div>
-		<!-- .wrapper END -->
+	<div>
+	<!-- .wrapper END -->
 		
 	</body>
 </html>
