@@ -1,0 +1,148 @@
+body {
+	width: 1280px;
+	margin: 0 auto;
+	text-align:center;
+	//background-color:#48036F;
+}
+
+
+h1 {
+	text-align: center;
+	margin: auto;
+	padding: 5px;
+}
+
+
+nav {
+	text-align:center;
+	width: 100%;
+	height: relative;
+	float: left;
+	margin: 0 0 10px 0;
+	padding: 0;
+	list-style: none;
+	background-color: #f2f2f2;
+	border-bottom: 1px solid #ccc; 
+	border-top: 1px solid #ccc; }
+
+nav li {
+	float: left; 
+}
+
+nav li a {
+	text-align:center;
+	display: inline;
+	padding: 8px 15px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #069;
+	border-right: 1px solid #ccc; 
+}
+
+nav li a:hover {
+		color: #c00;
+		background-color: #fff; 
+}
+
+
+footer{
+	clear:both;
+	height:100px;
+}
+
+li {
+	display:inline;
+	padding: 5px;
+}
+
+#wrapper {
+	//background-color: #AFEEEE;
+}
+
+#content {
+	border-style: groove;
+	overflow: auto;
+	height:100%;
+	background: #f2f2f2;
+}
+
+#TrackListMenu{
+	border-style: groove;
+	background-color: #fff;
+	width: 600px;
+	height: 100%;
+	float: right;
+	margin: 10px;
+}
+
+#MixerMenu{
+	border-style: groove;
+	background-color: #fff;
+	width: 600px;
+	height: 100%;
+	float: left;
+	margin: 10px;
+}
+
+#TrackControls{
+	border-style: groove;
+	margin:20px 0 20px 0;
+	background-color:#ffffff;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+}
+
+div[class^="track_"],div[class^="mixer_"]{
+	border-style: groove;
+	width:595px;
+	height: 40px;
+}
+
+
+label{
+	float:left;
+	display:inline-block;
+}
+
+fieldset{
+	border:0;
+}
+
+.equalizer{
+	float:left;
+	height:10px;
+	margin-right:22px;
+}
+
+.volume{
+	float:left;
+	height:15px;
+	margin-right:15px;
+}
+
+.MuteBox{
+	float:left;
+	height:10px;
+	margin-right:10px;
+}
+
+.MasterVolume{
+	float:left;
+	margin-right:22px;
+}
+
+.PlayPause{
+	float:left;
+	margin-right:22px;
+}
+
+.myList{
+	float:left;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+
+
