@@ -14,20 +14,24 @@
 	<body>
 		<!-- wrapper START -->
 		<div id="wrapper">
-
+				<!-- Small Title -->
+				<h2>Audio Mixer</h2>
+		
+				<!-- Large Title -->
 				<h1>Virtual Studio</h1>		
+				
 				<!-- Navigation Bar Links START-->
 				<nav> 
 					<ul> 
 						<li><a href="">Home</a></li>
-						<li><a href="">About Virtual Studio</a></li>
+						<li><a href="">About</a></li>
 						<li><a href="">Contact</a></li><li><a href="">Log in</a></li>
 						<li><a href="">Sign up</a></li>
 					</ul>
 				</nav>
 				<!-- Navigation Bar END -->
 
-	<!-- ********************** NEED  TO PLACE A TOP CONTAINER **************** -->
+
 	
 	<!-- ********************************************************************************* -->
 	
@@ -899,31 +903,31 @@
 				<!-- GROUP Forms -->
 				<fieldset>
 				
+					<!-- Play/Pause Track BEGIN -->
+					<!-- Edit: May need to remove the onclick=alert -->
+					<div class="PlayPause">					
+						<button type="button" onclick="alert('playing music')">Play/Pause</button>
+					</div>
+					<!-- Play/Pause Track END -->
+				
+					
 					<!-- MasterVolume Slider BEGIN -->
 					<div class="MasterVolume">
 						<label for="range">Volume: </label>
 						<input type="range" min="0" max="100" id="slider" value="10" name="volume">
 					</div>
 					<!-- MasterVolume Slider END -->
-						
-					
-					<!-- Play/Pause Track BEGIN -->
-					<div class="PlayPause">					
-						<button type="button" onclick="alert('playing music')">Play/Pause</button>
-					</div>
-					<!-- Play/Pause Track END -->
-	
-				
-		
 
+					
 					<!-- Preset Select List BEGIN -->
-							<label>Select List: </label>
-							<select class = "myList">
-								<option value = "Rock">Rock</option>
-								<option value = "Pop">Pop</option>
-								<option value = "Folk">Folk</option>
-								<option value = "Jazz">Jazz</option>
-							</select>
+					<label>Preset: </label>
+						<select class = "myList">
+							<option value = "Rock">Rock</option>
+							<option value = "Pop">Pop</option>
+							<option value = "Folk">Folk</option>
+							<option value = "Jazz">Jazz</option>
+						</select>
+							
 					</fieldset>
 			</form>
 					<!-- Preset Select List END -->
