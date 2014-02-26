@@ -1,6 +1,6 @@
 body {
-	width: 1280px;
-	margin: 0 auto;
+	padding:0px;
+	margin: 0px;
 	text-align:center;
 	/*background-color:#48036F; */
 
@@ -15,6 +15,7 @@ body {
 
 }
 
+/* Logo Title Syle */
 h2 {
 	font-family: Gill Sans, Verdana;
 	font-size: 11px;
@@ -24,6 +25,7 @@ h2 {
 	font-weight: bold;
 }
 
+/* Logo Title Syle */
 h1 {
 	font-family: times, Times New Roman, times-roman, georgia, serif;
 	color: #444;
@@ -39,9 +41,9 @@ h1 {
 nav {
 	clear:both;
 	width: 100%;
-	height: relative;
+	height: 50px;
 	float: left;
-	margin: 0 0 20px 0;
+	margin: 0 0 15px 0;
 	padding: 0;
 	list-style: none;
 	background-color: #FEF0DB;
@@ -72,45 +74,45 @@ nav li a:hover {
 
 footer{
 	clear:both;
-	margin-top:10px;
-	height:100px;
+	margin-top:30px;
+	height:200px;
 }
 
+/* Displays NavBar Links without - */
 li {
 	display:inline;
 	padding: 5px;
 }
 
-#wrapper {
-	//background-color: #AFEEEE;
-}
+
 
 #content {
 
 	border-style: groove;
 	overflow: auto;
-	height:100%;
+	height:720px;
 	background: #FEF0DB;
 	box-shadow: 1px 1px 5px black;
 }
 
-#TrackListMenu{
-	border-style: groove;
-	background-color: #fff;
-	width: 600px;
-	height: 100%;
-	float: right;
-	margin: 10px;
-}
+
 
 #MixerMenu{
-	border-style: groove;
 	background-color: #fff;
 	width: 600px;
-	height: 100%;
+	height: 960px;
 	float: left;
-	margin: 10px;
 }
+
+
+#TrackListMenu{	
+	background-color: #fff;
+	margin-left:600px;	
+	overflow-x:scroll;
+	
+}
+
+
 
 #TrackControls{
 	opacity:0.80;
@@ -131,10 +133,27 @@ li {
 	filter:alpha(opacity=100); /* For IE8 and earlier */
 }
 
-div[class^="track_"],div[class^="mixer_"]{
+.wrapper{
+   width: undefined;
+   margin: 0 auto;
+}
+
+
+
+div[class^="mixer_"]{
 	border-style: groove;
 	width:595px;
 	height: 40px;
+}
+
+
+div[class^="track_"]{
+	border-style: groove;
+	width:400%;
+	height: 40px;
+	text-align:left;
+	line-height: 40px;
+	padding-left: 10px;
 }
 
 
