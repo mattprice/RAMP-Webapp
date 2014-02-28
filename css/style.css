@@ -2,86 +2,65 @@
    -------------- */
 
 body {
-	margin: 0px;
-	padding: 0px;
-	background-image: linear-gradient(right, #ff5a00, #FFAE00);
-	background-image: -webkit-linear-gradient(right, #ff5a00, #FFAE00);
-	background-image: -moz-linear-gradient(right, #ff5a00, #FFAE00);
-	background-image: -o-linear-gradient(right, #ff5a00, #FFAE00);
-	background-image: -ms-linear-gradient(right, #ff5a00, #FFAE00);
-	text-align: center;
-}
-
-/* Page Title */
-h1 {
 	margin: 0;
-	padding: 0px 0px 20px 0px;
-	color: #444;
-	letter-spacing: -2px;
-	font-weight: bold;
-	font-size: 51px;
-	font-family: Times, "Times New Roman", Georgia, serif;
-	line-height: 44px;
+	padding: 0;
+	width: 100%;
+	height: 100%;
 }
 
 /* Page Subtitle */
-h2 {
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	font-weight: bold;
-	font-size: 11px;
+h1 {
+	display: inline;
+	margin: 0;
+	padding: 0;
 	font-family: "Gill Sans", "Trebuchet MS", Calibri, sans-serif;
-	line-height: 14px;
 }
 
 #content {
-	overflow: auto;
-	border-style: groove;
-	background: #FEF0DB;
-	box-shadow: 1px 1px 5px black;
-}
-
-form {
-	margin: 0 auto;
-	width: 600px;
-}
-
-fieldset {
-	border: 0;
+	position: relative;
+	margin-top: 60px; /* Height + padding of the header */
+	margin-bottom: 50px; /* Height + padding of the footer */
+	width: 100%;
+	background-color: #fff;
 }
 
 label {
 	display: inline-block;
-	float: left;
 }
 
 
 /* Header Styles
    ------------- */
 
+header {
+	background-color: #ccc;
+	position: fixed;
+	right: 0;
+	top: 0;
+	left: 0;
+	height: 40px;
+	text-align: center;
+	padding: 10px;
+	z-index: 1;
+}
+
 nav {
-	float: left;
-	clear: both;
-	margin: 0 0 15px 0;
+	display: inline;
+	margin: 0;
 	padding: 0;
-	width: 100%;
-	height: 50px;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	border-radius: 10px;
-	background-color: #FEF0DB;
-	list-style: none;
+}
+
+nav ul {
+	display: inline;
 }
 
 nav li {
 	display: inline;
-	float: left;
-	padding: 5px;
+	list-style: none;
 }
 
 nav li a {
 	padding: 8px 15px;
-	border-right: 1px solid #ccc;
 	color: #069;
 	text-align: center;
 	text-decoration: none;
@@ -89,7 +68,6 @@ nav li a {
 }
 
 nav li a:hover {
-	background-color: #fff;
 	color: #c00;
 }
 
@@ -98,53 +76,75 @@ nav li a:hover {
    -------------------- */
 
 #track_controls {
-	float: left;
-	width: 600px;
-	height: 960px;
+	position: fixed;
+	left: 0;
+	padding-top: 15px;
+	width: 530px;
 	background-color: #fff;
 }
 
 .mixer {
-	width: 595px;
-	height: 40px;
-	border-style: groove;
+	/* Centering vertically is off by 40-ish pixels.
+	   Not sure why, so here's a temporary hack to fix it. */
+	border-bottom: 1px solid #ccc;
+	height: 100px;
+	padding-bottom: 40px;
+	padding-left: 15px;
+}
+
+.mixer:last-child {
+	border-bottom: none;
+}
+
+.equalizer, .volume, .effect {
+	display: inline;
+
+	/* Center the controls vertically. */
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
 }
 
 .equalizer {
-	float: left;
 	margin-right: 22px;
-	height: 10px;
 }
 
 .volume {
-	float: left;
 	margin-right: 15px;
-	height: 15px;
 }
 
-.MuteBox {
-	float: left;
-	margin-right: 10px;
-	height: 10px;
+.effect {
+	margin-right: 15px;
 }
 
+input[type="number"] {
+	width: 40px;
+}
 
 
 /* Waveform Styles
    --------------- */
 
 #track_waveforms {
-	overflow-x: scroll;
-	margin-left: 600px;
+	margin-left: 540px;
+	width: 100%;
+	padding-top: 15px;
 }
 
 .track {
-	padding-left: 10px;
-	width: 400%;
-	height: 40px;
-	border-style: groove;
-	text-align: left;
+	padding-right: 15px;
+	height: 125px;
+	border-bottom: 1px solid #ccc;
 	line-height: 40px;
+	display: inline-table;
+}
+
+.track:last-child {
+	border-bottom: none;
 }
 
 
@@ -156,32 +156,25 @@ footer {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	margin: 20px auto 20px auto;
-	width: 600px;
-	border-style: none;
-	background-color: #ffffff;
-	box-shadow: 1px 1px 5px black;
-	opacity: 0.80;
-	filter: alpha(opacity=80); /* For IE8 and earlier */
+	height: 50px;
+	background-color: #ccc;
+	vertical-align: middle;
+	text-align: center;
 }
 
-footer:hover {
-	opacity: 1.0;
-	filter: alpha(opacity=100); /* For IE8 and earlier */
+.master_play, .master_volume, .preset_list {
+	display: inline;
 }
 
 .master_play {
-	float: left;
 	margin-right: 90px;
 	margin-left: 15px;
 }
 
 .master_volume {
-	float: left;
 	margin-right: 50px;
 }
 
-.preset_flist {
-	float: left;
+.preset_list {
 	margin-left: 5px;
 }

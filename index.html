@@ -5,15 +5,15 @@
 	<title>Virtual Studio</title>
 	<link rel="stylesheet" type="text/css" href="css/normalize.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jsrender.min.js"></script>
 </head>
 
 <body>
 	<header>
-		<h1>Virtual Studio</h1>
-		<h2>Audio Mixer</h2>
+		<h1>Project Name</h1>
 		<nav>
 			<ul>
-				<li><a href="#">Home</a></li>
 				<li><a href="#">Download</a></li>
 			</ul>
 		</nav>
@@ -22,67 +22,85 @@
 	<div id="content">
 		<!-- Left Section: Track Controls -->
 		<div id="track_controls">
-			<div id="mixer_1" class="mixer">
-				<form>
-					<fieldset>
-						<div class="equalizer">
-							<label for="low">L:</label>
-							<input type="number" min="-10" max="10" step="1" value="0">
-						</div>
+			<script id="controls_template" type="text/x-jsrender">
+				<div id="mixer_{{:num}}" class="mixer">
+					<div class="equalizer">
+						<label for="low">L:</label>
+						<input type="number" min="-10" max="10" step="1" value="0">
+					</div>
 
-						<div class="equalizer">
-							<label for="med">M:</label>
-							<input type="number" min="-10" max="10" step="1" value="0">
-						</div>
+					<div class="equalizer">
+						<label for="med">M:</label>
+						<input type="number" min="-10" max="10" step="1" value="0">
+					</div>
 
-						<div class="equalizer">
-							<label for="high">H:</label>
-							<input type="number" min="-10" max="10" step="1" value="0">
-						</div>
+					<div class="equalizer">
+						<label for="high">H:</label>
+						<input type="number" min="-10" max="10" step="1" value="0">
+					</div>
 
-						<div class="volume">
-							<label for="range">Vol:</label>
-							<input type="range" min="0" max="100" id="slider" value="10" name="volume">
-						</div>
+					<div class="volume">
+						<label for="range">Vol:</label>
+						<input type="range" min="0" max="100" id="slider" value="10" name="volume">
+					</div>
 
-						<div class="effect">
-							<label for="mute">Mute</label>
-							<input type="checkbox" id="mute">
-						</div>
-					</fieldset>
-				</form>
-			</div>
+					<div class="effect">
+						<label for="mute">Mute</label>
+						<input type="checkbox">
+					</div>
+				</div>
+			</script>
 		</div>
 
 		<!-- Right Section: Waveforms  -->
 		<div id="track_waveforms">
-			<div id="track_1" class="track">
-				Track 1:
-			</div>
+			<script id="waveforms_template" type="text/x-jsrender">
+				<div id="track_{{:num}}" class="track">
+					<img src="img/waveform.png" width="2200px" />
+				</div>
+			</script>
 		</div>
 	</div>
 
 	<footer>
-		<form>
-			<fieldset>
-				<div class="master_play">
-					<button type="button">Play/Pause</button>
-				</div>
+		<div class="master_play">
+			<button type="button">Play/Pause</button>
+		</div>
 
-				<div class="master_volume">
-					<label for="range">Volume: </label>
-					<input type="range" min="0" max="100" id="slider" value="10" name="volume">
-				</div>
+		<div class="master_volume">
+			<label for="range">Volume: </label>
+			<input type="range" min="0" max="100" id="slider" value="10" name="volume">
+		</div>
 
-				<label>Preset: </label>
-				<select class="preset_list">
-					<option value="Rock">Rock</option>
-					<option value="Pop">Pop</option>
-					<option value="Folk">Folk</option>
-					<option value="Jazz">Jazz</option>
-				</select>
-			</fieldset>
-		</form>
+		<select class="preset_list">
+			<label>Preset: </label>
+			<option value="Rock">Rock</option>
+			<option value="Pop">Pop</option>
+			<option value="Folk">Folk</option>
+			<option value="Jazz">Jazz</option>
+		</select>
 	</footer>
+
+	<script type="text/javascript">
+		// Request the track information (in JSON format) from the webserver.
+		// This will eventually get requested from the RAMP Server instead.
+		$.getJSON("tracks.json", function(trackList) {
+			// Render the controls.
+			$("#track_controls").html(
+				$("#controls_template").render(trackList)
+			);
+
+			// Render the waveforms.
+			$("#track_waveforms").html(
+				$("#waveforms_template").render(trackList)
+			);
+		});
+
+		// Don't let the controls scoll vertically.
+		// There's no way to do this in pure CSS yet, unfortunately.
+		$(window).scroll(function() {
+			$("#track_controls").css("margin-top", "-" + $("body").scrollTop() + "px");
+		});
+	</script>
 </body>
 </html>
