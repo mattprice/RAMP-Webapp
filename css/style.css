@@ -91,12 +91,7 @@ nav li a:hover {
 	padding-top: 15px;
 	width: 530px;
 	box-shadow: 0 1px 5px 2px rgb(52,52,53);
-	background: rgb(104,104,104);
-	background: -moz-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* FF3.6+ */
-	background: -webkit-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* Chrome10+, Safari5.1+ */
-	background: -o-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* IE10+ */
-	background: linear-gradient(to bottom, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* W3C */
+   background: rgb(131,131,131);
 }
 
 .mixer {
@@ -106,6 +101,12 @@ nav li a:hover {
 	height: 100px;
 	padding-bottom: 40px;
 	padding-left: 15px;
+   background: rgb(104,104,104);
+   background: -moz-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* FF3.6+ */
+   background: -webkit-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* Chrome10+, Safari5.1+ */
+   background: -o-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* Opera 11.10+ */
+   background: -ms-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* IE10+ */
+   background: linear-gradient(to bottom, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* W3C */
 }
 
 .mixer:last-child {
