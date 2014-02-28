@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:600);
+
 /* General Styles
    -------------- */
 
@@ -13,7 +15,8 @@ h1 {
 	display: inline;
 	margin: 0;
 	padding: 0;
-	font-family: "Gill Sans", "Trebuchet MS", Calibri, sans-serif;
+	color: #fff;
+	font-family: "Source Sans Pro", Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 #content {
@@ -42,6 +45,13 @@ header {
 	text-align: center;
 	padding: 10px;
 	z-index: 1;
+	box-shadow: 1px 0 5px 2px #000;
+	background: rgb(59,59,59);
+	background: -moz-linear-gradient(top, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* FF3.6+ */
+	background: -webkit-linear-gradient(top, rgb(80,80,81) 0%,rgb(59,59,59) 100%); /* Chrome10+, Safari5.1+ */
+	background: -o-linear-gradient(top, rgb(80,80,81) 0%,rgb(59,59,59) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgb(80,80,81) 0%,rgb(59,59,59) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgb(80,80,81) 0%,rgb(59,59,59) 100%); /* W3C */
 }
 
 nav {
@@ -80,13 +90,19 @@ nav li a:hover {
 	left: 0;
 	padding-top: 15px;
 	width: 530px;
-	background-color: #fff;
+	box-shadow: 0 1px 5px 2px rgb(52,52,53);
+	background: rgb(104,104,104);
+	background: -moz-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* FF3.6+ */
+	background: -webkit-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* Chrome10+, Safari5.1+ */
+	background: -o-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* W3C */
 }
 
 .mixer {
 	/* Centering vertically is off by 40-ish pixels.
 	   Not sure why, so here's a temporary hack to fix it. */
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #333;
 	height: 100px;
 	padding-bottom: 40px;
 	padding-left: 15px;
@@ -110,7 +126,7 @@ nav li a:hover {
 }
 
 .equalizer {
-	margin-right: 22px;
+	margin-right: 15px;
 }
 
 .volume {
@@ -157,9 +173,14 @@ footer {
 	bottom: 0;
 	left: 0;
 	height: 50px;
-	background-color: #ccc;
-	vertical-align: middle;
 	text-align: center;
+	box-shadow: -1px 0 5px 2px #000;
+	background: rgb(59,59,59);
+	background: -moz-linear-gradient(top, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* FF3.6+ */
+	background: -webkit-linear-gradient(top, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* Chrome10+, Safari5.1+ */
+	background: -o-linear-gradient(top, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* W3C */
 }
 
 .master_play, .master_volume, .preset_list {

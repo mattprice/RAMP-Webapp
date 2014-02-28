@@ -11,7 +11,7 @@
 
 <body>
 	<header>
-		<h1>Project Name</h1>
+		<h1>Project Title</h1>
 		<nav>
 			<ul>
 				<li><a href="#">Download</a></li>
@@ -95,6 +95,22 @@
 				$("#waveforms_template").render(trackList)
 			);
 		});
+
+		// Random fake song title, just for giggles.
+		var songTitles = [
+			"A Touch Of Your Highway",
+			"Fears Hurt",
+			"I Need Problems",
+			"Impossible Lies",
+			"Learning Indifference",
+			"Manual Ghost",
+			"Infinite Indecision",
+			"Smooth Histerics",
+			"Surprises From Heaven",
+			"Thorny Advantages",
+			"Undeniable Lunacy"
+		];
+		$("h1").html(songTitles[Math.floor(Math.random() * songTitles.length)]);
 
 		// Don't let the controls scoll vertically.
 		// There's no way to do this in pure CSS yet, unfortunately.
