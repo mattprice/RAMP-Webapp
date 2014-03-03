@@ -21,9 +21,9 @@
 
 	<div id="content">
 		<!-- Left Section: Track Controls -->
-		<div id="track_controls">
-			<script id="controls_template" type="text/x-jsrender">
-				<div id="mixer_{{:num}}" class="mixer">
+		<div id="track-controls">
+			<script id="controls-template" type="text/x-jsrender">
+				<div id="mixer-{{:num}}" class="mixer">
 					<div class="equalizer">
 						<label for="low">L:</label>
 						<input type="number" min="-10" max="10" step="1" value="0">
@@ -53,9 +53,9 @@
 		</div>
 
 		<!-- Right Section: Waveforms  -->
-		<div id="track_waveforms">
-			<script id="waveforms_template" type="text/x-jsrender">
-				<div id="track_{{:num}}" class="track">
+		<div id="track-waveforms">
+			<script id="waveforms-template" type="text/x-jsrender">
+				<div id="track-{{:num}}" class="track">
 					<img src="img/waveform.png" width="2200px" />
 				</div>
 			</script>
@@ -63,22 +63,24 @@
 	</div>
 
 	<footer>
-		<div class="master_play">
+		<div class="master-play">
 			<button type="button">Play/Pause</button>
 		</div>
 
-		<div class="master_volume">
-			<label for="range">Volume: </label>
-			<input type="range" min="0" max="100" id="slider" value="10" name="volume">
+		<div class="master-volume">
+			<label for="master-volume-slider">Volume: </label>
+			<input type="range" min="0" max="100" value="10" id="master-volume-slider" name="master-volume-slider">
 		</div>
 
-		<select class="preset_list">
-			<label>Preset: </label>
-			<option value="Rock">Rock</option>
-			<option value="Pop">Pop</option>
-			<option value="Folk">Folk</option>
-			<option value="Jazz">Jazz</option>
-		</select>
+		<div class="preset-list">
+			<label for="preset-select">Presets:</label>
+			<select id="preset-select" name="preset-select">
+				<option value="Rock">Rock</option>
+				<option value="Pop">Pop</option>
+				<option value="Folk">Folk</option>
+				<option value="Jazz">Jazz</option>
+			</select>
+		</div>
 	</footer>
 
 	<script type="text/javascript">
@@ -86,13 +88,13 @@
 		// This will eventually get requested from the RAMP Server instead.
 		$.getJSON("tracks.json", function(trackList) {
 			// Render the controls.
-			$("#track_controls").html(
-				$("#controls_template").render(trackList)
+			$("#track-controls").html(
+				$("#controls-template").render(trackList)
 			);
 
 			// Render the waveforms.
-			$("#track_waveforms").html(
-				$("#waveforms_template").render(trackList)
+			$("#track-waveforms").html(
+				$("#waveforms-template").render(trackList)
 			);
 		});
 
@@ -115,7 +117,7 @@
 		// Don't let the controls scoll vertically.
 		// There's no way to do this in pure CSS yet, unfortunately.
 		$(window).scroll(function() {
-			$("#track_controls").css("margin-top", "-" + $("body").scrollTop() + "px");
+			$("#track-controls").css("margin-top", "-" + $("body").scrollTop() + "px");
 		});
 	</script>
 </body>
