@@ -126,10 +126,18 @@
 		];
 		$("h1").html(songTitles[Math.floor(Math.random() * songTitles.length)]);
 
-		// Don't let the controls scoll vertically.
-		// There's no way to do this in pure CSS yet, unfortunately.
+		//
 		$(window).scroll(function() {
-			$("#track-controls").css("margin-top", "-" + $("body").scrollTop() + "px");
+			// We calculate this every scroll incase the user has resized the window.
+			var maxHeight = $(document).height() - $(window).height();
+			var scrollTop = $(document).scrollTop();
+
+			// Don't let the controls scoll vertically.
+			// NOTE: If scrollTop is greater than maxHeight the user has scrolled
+			// past the end of the page, which is why we don't move the controls.
+			if (scrollTop <= maxHeight) {
+				$("#track-controls").css("margin-top", "-" + scrollTop + "px");
+			}
 		});
 	</script>
 </body>
