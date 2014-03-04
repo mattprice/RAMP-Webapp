@@ -84,9 +84,21 @@
 	</footer>
 
 	<script type="text/javascript">
+		// If RAMP is being loaded from file://, fall back to the remote copy of
+		// tracks.json. Chrome won't load the local copy due to security concerns.
+		var trackURL;
+		switch(window.location.protocol) {
+			case 'http:':
+			case 'https:':
+				trackURL = "tracks.json";
+			default:
+				trackURL = "http://ramp.embercode.com/tracks.json"
+				break;
+		}
+
 		// Request the track information (in JSON format) from the webserver.
 		// This will eventually get requested from the RAMP Server instead.
-		$.getJSON("tracks.json", function(trackList) {
+		$.getJSON(trackURL, function(trackList) {
 			// Render the controls.
 			$("#track-controls").html(
 				$("#controls-template").render(trackList)
