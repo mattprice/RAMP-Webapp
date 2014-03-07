@@ -10,7 +10,6 @@ body {
 	height: 100%;
 }
 
-
 /* Page Subtitle */
 h1 {
 	display: inline;
@@ -27,10 +26,6 @@ h1 {
 	width: 100%;
 	background-color: #fff;
 }
-
-/******************************************************************************************************************************** */
-
-
 
 label {
 	display: inline-block;
@@ -59,8 +54,6 @@ header {
 	text-align: center;
 }
 
-/******************************************************************************************************************************** */
-
 nav {
 	display: inline;
 	margin: 0;
@@ -88,23 +81,9 @@ nav li a:hover {
 	color: #c00;
 }
 
-/******************************************************************************************************************************** */
 
-
-label {
-	position: relative;
-	display: inline;
-	top: 25px;
-	float:left;
-	display:inline;
-}
-
-
-/******************************************************************************************************************************** */
-		/* #track-controls */		/* #track-controls*/		/* #track-controls */		/* #track-controls */
-/******************************************************************************************************************************** */
-
-	/* Mixer Styles */
+/* Track Controls
+   -------------- */
 
 #track-controls {
 	position: fixed;
@@ -133,8 +112,8 @@ label {
 }
 
 .equalizer,
-.volume,
-.effect {
+.mute-solo,
+.volume {
 	display: inline;
 
 	/* Center the controls vertically. */
@@ -148,28 +127,108 @@ label {
 }
 
 .equalizer {
-	margin-right: 15px;
+	margin-right: 10px;
 }
 
 .volume {
-	margin-right: 15px;
+	margin-right: 10px;
 }
 
-.effect {
-	margin-right: 15px;
-}
-
-input[type="number"] {
-	width: 40px;
+.mute-solo {
+	display: inline-block;
 }
 
 
+/* Mute and Solo Switch
+   -------------------- */
 
-/******************************************************************************************************************************** */
-		/* #track-waveforms */		/* #track-waveforms */		/* #track-waveforms */		/* #track-waveforms */
-/******************************************************************************************************************************** */
+.onoff {
+	position: relative;
+	display: inline-block;
+	width: 58px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
 
-	/* Waveform Styles */
+.onoff input {
+	display: none;
+}
+
+.onoff-label {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	border: 2px solid #999;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.onoff-inner {
+	margin-left: -100%;
+	width: 200%;
+	-webkit-transition: margin 0.3s ease-in 0s;
+	-moz-transition: margin 0.3s ease-in 0s;
+	-o-transition: margin 0.3s ease-in 0s;
+	transition: margin 0.3s ease-in 0s;
+}
+
+.onoff-inner:before, .onoff-inner:after {
+	float: left;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0;
+	width: 50%;
+	height: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 12px;
+	font-family: Trebuchet, Arial, sans-serif;
+	line-height: 16px;
+}
+
+.onoff-inner:before {
+	padding-left: 10px;
+	background-color: #2fccff; color: #fff;
+	content: "ON";
+}
+
+.onoff-inner:after {
+	padding-right: 10px;
+	background-color: #eee;
+	color: #999;
+	content: "OFF";
+	text-align: right;
+}
+
+.onoff-switch {
+	position: absolute;
+	top: 0;
+	right: 38px;
+	bottom: 0;
+	margin: 3px;
+	width: 5px;
+	border: 2px solid #999;
+	border-radius: 10px;
+	background: #fff;
+	-webkit-transition: all 0.3s ease-in 0s;
+	-moz-transition: all 0.3s ease-in 0s;
+	-o-transition: all 0.3s ease-in 0s;
+	transition: all 0.3s ease-in 0s;
+}
+
+.onoff input:checked + .onoff-label .onoff-inner {
+	margin-left: 0;
+}
+
+.onoff input:checked + .onoff-label .onoff-switch {
+	right: 0px;
+}
+
+
+/* Waveform Styles
+   --------------- */
 
 #track-waveforms {
 	margin-left: 540px;
@@ -189,11 +248,9 @@ input[type="number"] {
 	border-bottom: none;
 }
 
-/******************************************************************************************************************************** */
-			/* Footer Styles */			/* Footer Styles */			/* Footer Styles */			/* Footer Styles */
-/******************************************************************************************************************************** */
-	
-	/* Footer Styles */
+
+/* Footer Styles
+   ------------- */
 
 footer {
 	position: fixed;
@@ -228,73 +285,4 @@ footer {
 
 .preset-list {
 	margin-left: 5px;
-}
-
-
-/******************************************************************************************************************************** */
-		/* Mute and Solo Switch Styling */		/* Mute and Solo Switch Styling */		/* Mute and Solo Switch Styling */
-/******************************************************************************************************************************** */
-
-.onoffswitch {
-	font-size: 11px;
-	float: left;
-	position: relative; 
-	width: 60px;
-	-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;	
-}
-
-
-
-.onoffswitch-checkbox {
-    display: none;
-}
-
-.onoffswitch-label {
-    display: block; overflow: hidden; cursor: pointer;
-    border: 2px solid #E7E6ED; border-radius: 40px;
-}
-
-.onoffswitch-inner {
-    width: 200%; margin-left: -100%;
-    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
-    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
-}
-
-.onoffswitch-inner:before, .onoffswitch-inner:after {
-    float: left; width: 50%; height: 15px; padding: 0; line-height: 15px;
-    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
-    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-}
-
-.onoffswitch-inner:before {
-    content: "ON";
-    padding-left: 11px;
-        text-align: left;
-
-    background-color: #00D5FF; color: #FFFFFF;
-}
-
-.onoffswitch-inner:after {
-    content: "OFF";
-    padding-right: 11px;
-    background-color: #00D5FF; color: #FFFFFF;
-    text-align: right;
-}
-
-.onoffswitch-switch {
-    width: 18px; margin: 0.5px;
-    background: #FFFFFF;
-    border: 2px solid #E7E6ED; border-radius: 50px;
-    position: absolute; top: 0; bottom: 0; right: 37px;
-    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
-    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
-}
-
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-    margin-left: 0;
-}
-
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-    right: 0px; 
-    background-color: #3CFF00; 
 }
