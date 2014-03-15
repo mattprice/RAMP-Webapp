@@ -265,6 +265,7 @@ footer {
 	background: -ms-linear-gradient(top, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* IE10+ */
 	background: linear-gradient(to bottom, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* W3C */
 	box-shadow: -1px 0 5px 2px #000;
+	color: #fff;
 	text-align: center;
 }
 
