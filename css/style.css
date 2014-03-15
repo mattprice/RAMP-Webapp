@@ -268,21 +268,22 @@ footer {
 	text-align: center;
 }
 
-.master-play,
-.master-volume,
-.preset-list {
+#master-play,
+#master-volume,
+#preset-list {
 	display: inline;
 }
 
-.master-play {
-	margin-right: 90px;
-	margin-left: 15px;
+#master-play {
+	margin: 0 20px;
 }
 
-.master-volume {
-	margin-right: 50px;
+#master-play input {
+	width: 50px;
+	height: 50px;
+	vertical-align: middle;
 }
 
-.preset-list {
-	margin-left: 5px;
+#master-volume input {
+	vertical-align: middle;
 }

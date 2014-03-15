@@ -78,23 +78,14 @@
 		<div id="track-waveforms">
 			<script id="waveforms-template" type="text/x-jsrender">
 				<div id="track-{{:num}}" class="track">
-					<img src="img/waveform.png" width="2200px" />
+					<img src="img/waveform.png" width="2200px">
 				</div>
 			</script>
 		</div> <!-- #track-waveforms -->
 	</div> <!-- .content -->
 
 	<footer>
-		<div class="master-play">
-			<button type="button">Play/Pause</button>
-		</div>
-
-		<div class="master-volume">
-			<label for="master-volume-slider">Volume: </label>
-			<input type="range" min="0" max="100" value="10" id="master-volume-slider" name="master-volume-slider">
-		</div>
-
-		<div class="preset-list">
+		<div id="preset-list">
 			<label for="preset-select">Presets:</label>
 			<select id="preset-select" name="preset-select">
 				<option value="Rock">Rock</option>
@@ -103,6 +94,15 @@
 				<option value="Jazz">Jazz</option>
 			</select>
 		</div> <!-- .preset-list -->
+
+		<div id="master-play">
+			<input type="image" src="img/play.png" data-status="paused">
+		</div>
+
+		<div id="master-volume">
+			<label for="master-volume-slider">Volume: </label>
+			<input type="range" min="0" max="100" value="10" id="master-volume-slider" name="master-volume-slider">
+		</div>
 	</footer>
 
 	<script type="text/javascript">
@@ -206,6 +206,24 @@
 			// past the end of the page, which is why we don't move the controls.
 			if (scrollTop <= maxHeight) {
 				$("#track-controls").css("margin-top", "-" + scrollTop + "px");
+			}
+		});
+
+		// Toggle the play/pause button when clicked.
+		// NOTE: The image displays what will happen not what is happening.
+		$("#master-play input").click(function() {
+			var elem = $(this);
+
+			// Swapping from Play to Pause.
+			if (elem.attr("data-status") == "playing") {
+				elem.attr("src", "img/play.png");
+				elem.attr("data-status", "paused");
+			}
+
+			// Swapping from Pause to Play.
+			else {
+				elem.attr("src", "img/pause.png");
+				elem.attr("data-status", "playing");
 			}
 		});
 	</script>
