@@ -31,6 +31,10 @@ label {
 	display: inline-block;
 }
 
+input {
+	vertical-align: middle;
+}
+
 
 /* Header Styles
    ------------- */
@@ -95,9 +99,8 @@ nav li a:hover {
 }
 
 .mixer {
-	padding-bottom: 40px;
 	padding-left: 15px;
-	height: 100px;
+	height: 140px;
 	border-bottom: 1px solid #333;
    background: rgb(104,104,104);
    background: -moz-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* FF3.6+ */
@@ -111,12 +114,7 @@ nav li a:hover {
 	border-bottom: none;
 }
 
-.equalizer,
-.mute-solo,
-.volume {
-	display: inline;
-
-	/* Center the controls vertically. */
+.v-align {
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
@@ -126,16 +124,22 @@ nav li a:hover {
 	-o-transform: translateY(-50%);
 }
 
-.equalizer {
-	margin-right: 10px;
+.eq_low,
+.eq_med,
+.eq_high,
+.mute-solo,
+.volume {
+	display: inline-block;
+}
+
+.eq_low,
+.eq_med,
+.eq_high {
+	margin-right: 15px;
 }
 
 .volume {
 	margin-right: 10px;
-}
-
-.mute-solo {
-	display: inline-block;
 }
 
 
@@ -144,7 +148,6 @@ nav li a:hover {
 
 .onoff {
 	position: relative;
-	display: inline-block;
 	width: 58px;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -282,9 +285,4 @@ footer {
 #master-play input {
 	width: 50px;
 	height: 50px;
-	vertical-align: middle;
-}
-
-#master-volume input {
-	vertical-align: middle;
 }
