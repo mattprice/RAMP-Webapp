@@ -99,8 +99,8 @@ nav li a:hover {
 }
 
 .mixer {
-	padding-left: 15px;
-	height: 140px;
+	padding: 10px 15px;
+	height: 75px;
 	border-bottom: 1px solid #333;
    background: rgb(104,104,104);
    background: -moz-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* FF3.6+ */
@@ -140,6 +140,7 @@ nav li a:hover {
 
 .volume {
 	margin-right: 10px;
+	width: 135px;
 }
 
 
@@ -234,17 +235,17 @@ nav li a:hover {
    --------------- */
 
 #track-waveforms {
-	margin-left: 540px;
+	margin-left: 530px;
 	padding-top: 15px;
 	width: 100%;
 }
 
 .track {
 	display: inline-table;
-	padding-right: 15px;
-	height: 125px;
+	padding: 10px 15px;
+	height: 75px;
 	border-bottom: 1px solid #ccc;
-	line-height: 40px;
+	line-height: 0; /* Keeps the height measurements honest */
 }
 
 .track:last-child {
