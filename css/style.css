@@ -290,3 +290,7 @@ footer {
 	height: 50px;
 	outline: none;
 }
+
+#preset-select {
+	color: #000;
+}
