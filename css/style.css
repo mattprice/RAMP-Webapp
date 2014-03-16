@@ -108,10 +108,27 @@ nav li a:hover {
    background: -o-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* Opera 11.10+ */
    background: -ms-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* IE10+ */
    background: linear-gradient(to bottom, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* W3C */
+   position: relative;
 }
 
 .mixer:last-child {
 	border-bottom: none;
+}
+
+.track-name {
+	position: absolute;
+	top: 5px;
+	left: 540px;
+	display: inline;
+	width: 100%;
+}
+
+.track-name span {
+	padding: .1em .3em;
+	border-radius: 3px;
+	background-color: rgba(193,229,247,.75);
+	color: #222;
+	font-size: .75em;
 }
 
 .v-align {
