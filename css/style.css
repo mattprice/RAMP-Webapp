@@ -21,7 +21,7 @@ h1 {
 
 #content {
 	position: relative;
-	margin-top: 60px; /* Height + padding of the header */
+	margin-top: 50px; /* Height + padding of the header */
 	margin-bottom: 50px; /* Height + padding of the footer */
 	width: 100%;
 	background-color: #fff;
@@ -261,6 +261,7 @@ footer {
 	right: 0;
 	bottom: 0;
 	left: 0;
+	padding: 10px;
 	height: 50px;
 	background: rgb(59,59,59);
 	background: -moz-linear-gradient(top, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* FF3.6+ */
@@ -277,6 +278,7 @@ footer {
 #master-volume,
 #preset-list {
 	display: inline;
+	margin-top: 205px;
 }
 
 #master-play {
