@@ -1,0 +1,300 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:600);
+
+/* General Styles
+   -------------- */
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+#content {
+	position: relative;
+	margin-top: 60px; /* Height + padding of the header */
+	margin-bottom: 50px; /* Height + padding of the footer */
+	width: 100%;
+	background-color: #fff;
+}
+
+
+
+/* ******************************************************************************************************************************* */
+
+/* Page Subtitle */
+h1 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	color: #fff;
+	font-family: "Source Sans Pro", Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Header Styles
+   ------------- */
+
+header {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1;
+	padding: 10px;
+	height: 40px;
+	background: rgb(59,59,59);
+	background: -moz-linear-gradient(top, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* FF3.6+ */
+	background: -webkit-linear-gradient(top, rgb(80,80,81) 0%,rgb(59,59,59) 100%); /* Chrome10+, Safari5.1+ */
+	background: -o-linear-gradient(top, rgb(80,80,81) 0%,rgb(59,59,59) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgb(80,80,81) 0%,rgb(59,59,59) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgb(80,80,81) 0%,rgb(59,59,59) 100%); /* W3C */
+	background-color: #ccc;
+	box-shadow: 1px 0 5px 2px #000;
+	text-align: center;
+}
+
+/* ******************************************************************************************************************************* */
+
+
+nav {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul {
+	display: inline;
+}
+
+nav li {
+	display: inline;
+	list-style: none;
+}
+
+nav li a {
+	padding: 8px 15px;
+	color: #069;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+nav li a:hover {
+	color: #c00;
+}
+
+
+/* ******************************************************************************************************************************* */
+
+
+label {
+	position: relative;
+	display: inline;
+	top: 25px;
+	float:left;
+	display:inline;
+}
+
+
+/* ******************************************************************************************************************************* */
+		/* #track-controls */		/* #track-controls*/		/* #track-controls */		/* #track-controls */
+/* ******************************************************************************************************************************* */
+	#track-controls {
+		position: fixed;
+		left: 0;
+		padding-top: 15px;
+		width: 530px;
+	   background: rgb(131,131,131);
+		box-shadow: 0 1px 5px 2px rgb(52,52,53);
+	}
+
+	.mixer {
+		padding-bottom: 40px;
+		padding-left: 15px;
+		height: 100px;
+		border-bottom: 1px solid #333;
+	   background: rgb(104,104,104);
+	   background: -moz-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* FF3.6+ */
+	   background: -webkit-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* Chrome10+, Safari5.1+ */
+	   background: -o-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* Opera 11.10+ */
+	   background: -ms-linear-gradient(top, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* IE10+ */
+	   background: linear-gradient(to bottom, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* W3C */
+	}
+
+	.mixer:last-child {
+		border-bottom: none;
+	}
+
+
+		.equalizer,
+		.volume{
+			display: inline;
+			/* Center the controls vertically. */
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+			-webkit-transform: translateY(-50%);
+			-moz-transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
+			-o-transform: translateY(-50%);
+		}
+
+		.equalizer {
+			float: left;
+			height:10px;
+			font-weight:bold;
+			margin-right:5px;
+		}
+
+		.volume {
+			margin-right: 15px;
+			float:left;
+			height:15px;
+		}
+
+
+		input[type="number"] {
+			width: 40px;
+		}
+
+
+
+
+/* ******************************************************************************************************************************* */
+		/* #track-waveforms */		/* #track-waveforms */		/* #track-waveforms */		/* #track-waveforms */
+/* ******************************************************************************************************************************* */
+	#track-waveforms {
+		margin-left: 540px;
+		padding-top: 15px;
+		width: 100%;
+	}
+
+	.track {
+		display: inline-table;
+		padding-right: 15px;
+		height: 125px;
+		border-bottom: 1px solid #ccc;
+		line-height: 40px;
+	}
+
+
+	.track:last-child {
+		border-bottom: none;
+	}
+
+
+
+/* ******************************************************************************************************************************* */
+			/* Footer Styles */			/* Footer Styles */			/* Footer Styles */			/* Footer Styles */
+/* ******************************************************************************************************************************* */
+
+	footer {
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		height: 50px;
+		background: rgb(59,59,59);
+		background: -moz-linear-gradient(top, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* FF3.6+ */
+		background: -webkit-linear-gradient(top, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* Chrome10+, Safari5.1+ */
+		background: -o-linear-gradient(top, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* IE10+ */
+		background: linear-gradient(to bottom, rgb(80,80,81) 0%, rgb(59,59,59) 100%); /* W3C */
+		box-shadow: -1px 0 5px 2px #000;
+		text-align: center;
+	}
+
+
+
+		.master-play,
+		.master-volume,
+		.preset-list {
+			display: inline;
+		}
+
+
+		.master-play {
+			margin-right: 90px;
+			margin-left: 15px;
+		}
+
+
+		.master-volume {
+			margin-right: 50px;
+		}
+
+
+		.preset-list {
+			margin-left: 5px;
+		}
+
+
+
+/* ******************************************************************************************************************************* */
+		/* Mute and Solo Switch Styling */		/* Mute and Solo Switch Styling */		/* Mute and Solo Switch Styling */
+/* ******************************************************************************************************************************* */
+
+.onoffswitch {
+	font-size: 11px;
+	float: left;
+	position: relative; 
+	width: 60px;
+	-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;	
+}
+
+
+
+.onoffswitch-checkbox {
+    display: none;
+}
+
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #E7E6ED; border-radius: 40px;
+}
+
+.onoffswitch-inner {
+    width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    float: left; width: 50%; height: 15px; padding: 0; line-height: 15px;
+    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 11px;
+        text-align: left;
+
+    background-color: #00D5FF; color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 11px;
+    background-color: #00D5FF; color: #FFFFFF;
+    text-align: right;
+}
+
+.onoffswitch-switch {
+    width: 18px; margin: 0.5px;
+    background: #FFFFFF;
+    border: 2px solid #E7E6ED; border-radius: 50px;
+    position: absolute; top: 0; bottom: 0; right: 37px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+    background-color: #3CFF00; 
+}
