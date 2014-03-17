@@ -20,23 +20,28 @@
 	</header>
 
 	<div id="content">
-		<!-- Left Section: Track Controls -->
-		<div id="track-controls">
-			<script id="controls-template" type="text/x-jsrender">
+<!-- ********************************************************************************************************************* -->
+<!-- Left Section: Track Controls -->		<!-- Left Section: Track Controls -->	  	 <!-- Left Section: Track Controls -->
+<!-- ********************************************************************************************************************* -->
+	<div id="track-controls">
+		<script id="controls-template" type="text/x-jsrender"> 
 				<div id="mixer-{{:num}}" class="mixer">
+
+
 					<div class="equalizer">
 						<label for="low">L:</label>
-						<input type="number" min="-10" max="10" step="1" value="0">
+						<input class="knob" data-width="33" data-min="-100" data-angleOffset=180 data-angleArc=360 data-fgColor="#66EE66" value="35">
 					</div>
 
-					<div class="equalizer">
-						<label for="med">M:</label>
-						<input type="number" min="-10" max="10" step="1" value="0">
-					</div>
 
-					<div class="equalizer">
+					<div class="equalizer"> 
+							<label for="med">M:</label>
+							<input class="knob" data-width="33" data-min="-100" data-angleOffset=180 data-angleArc=360 data-fgColor="#B4B83D" value="35">
+					</div>
+						
+					<div class="equalizer"> 
 						<label for="high">H:</label>
-						<input type="number" min="-10" max="10" step="1" value="0">
+						<input class="knob" data-width="33" data-min="-100" data-angleOffset=180 data-angleArc=360 data-fgColor="#A13649" value="35">
 					</div>
 
 					<div class="volume">
@@ -44,9 +49,26 @@
 						<input type="range" min="0" max="100" id="slider" value="10" name="volume">
 					</div>
 
-					<div class="effect">
-						<label for="mute">Mute</label>
-						<input type="checkbox">
+					<div class="onoffswitch">
+						<label for="muteonoffswitch">Mute:</label>
+
+					    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="muteonoffswitch">
+					    
+					    <label class="onoffswitch-label" for="muteonoffswitch">
+					        <div class="onoffswitch-inner"></div>
+					        <div class="onoffswitch-switch"></div>
+					    </label>
+					</div>
+
+					<div class="onoffswitch">
+					    <label for="soloonoffswitch">Solo:</label>
+
+						<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="soloonoffswitch">
+
+						<label class="onoffswitch-label" for="soloonoffswitch">
+						      <div class="onoffswitch-inner"></div>
+						      <div class="onoffswitch-switch"></div>
+					   	</label> 
 					</div>
 				</div>
 			</script>
@@ -108,6 +130,56 @@
 			$("#track-waveforms").html(
 				$("#waveforms-template").render(trackList)
 			);
+			
+						 // Render the knobs.
+		    $(".knob").knob({
+		        change : function (value) {
+		            //console.log("change : " + value);
+		        },
+		        release : function (value) {
+		             //console.log(this.$.attr('value'));
+		             console.log("release : " + value);
+		        },
+		        cancel : function () {
+		            console.log("cancel : ", this);
+		        },
+		        /*format : function (value) {
+		            return value + '%';
+		        },*/
+		        draw : function () {
+		            // "tron" case
+		            if(this.$.data('skin') == 'tron') {
+		                this.cursorExt = 0.3;
+
+		                var a = this.arc(this.cv)  // Arc
+		                    , pa                   // Previous arc
+		                    , r = 1;
+
+		                this.g.lineWidth = this.lineWidth;
+
+		                if (this.o.displayPrevious) {
+		                    pa = this.arc(this.v);
+		                    this.g.beginPath();
+		                    this.g.strokeStyle = this.pColor;
+		                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
+		                    this.g.stroke();
+
+		                    this.g.beginPath();
+		                    this.g.strokeStyle = r ? this.o.fgColor : this.fgColor ;
+		                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
+		                    this.g.stroke();
+
+		                    this.g.lineWidth = 2;
+		                    this.g.beginPath();
+		                    this.g.strokeStyle = this.o.fgColor;
+		                    this.g.arc( this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+		                    this.g.stroke();
+
+		                    return false;
+		                }
+		            }
+		        }
+		    })
 		});
 
 		// Random fake song title, just for giggles.
