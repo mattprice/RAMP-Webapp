@@ -201,11 +201,11 @@
 		];
 		$("h1").html(songTitles[Math.floor(Math.random() * songTitles.length)]);
 
-		//
+		// Don't let the controls scoll vertically.
 		$(window).scroll(function() {
 			// We calculate this every scroll incase the user has resized the window.
 			var maxHeight = $(document).height() - $(window).height();
-			var scrollTop = $(document).scrollTop();
+			var scrollTop = $(document).scrollTop() || $("html, body").scrollTop();
 
 			// Don't let the controls scoll vertically.
 			// NOTE: If scrollTop is greater than maxHeight the user has scrolled
