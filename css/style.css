@@ -22,7 +22,7 @@ h1 {
 #content {
 	position: relative;
 	margin-top: 50px; /* Height + padding of the header */
-	margin-bottom: 50px; /* Height + padding of the footer */
+	margin-bottom: 70px; /* Height + padding of the footer */
 	width: 100%;
 	background-color: #fff;
 }
