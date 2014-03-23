@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>RAMP Streaming Test</title>
+    <script type="text/javascript">
+        var websocket = null;
+
+        function writeToScreen(message) {
+            var pre = document.createElement("p");
+            pre.style.wordWrap = "break-word";
+            pre.innerHTML = message;
+            document.getElementById("output").appendChild(pre);
+        };
+
+        function streamMusic() {
+            var context;
+
+            try {
+                if (window.AudioContext) {
+                    // Official HTML5 AudioContext
+                    context = new AudioContext();
+                } else if (window.webkitAudioContext) {
+                    // Chrome, Safari, Opera (?)
+                    context = new webkitAudioContext();
+                } else if (window.MozWebSocket) {
+                    // Firefox
+                    context = window.MozWebSocket;
+                }
+            } catch(e) {
+                writeToScreen("Web Audio API is not supported in this browser.");
+            }
+
+            writeToScreen("Beginning socket connection.");
+            websocket = new WebSocket("ws://127.0.0.1:8080/stream");
+            websocket.binaryType = "arraybuffer";
+            output = document.getElementById("output");
+
+            websocket.onopen = function() {
+                writeToScreen("Connected to the socket server.");
+            };
+
+            websocket.onclose = function() {
+                writeToScreen("Disconnected from the socket server.");
+            };
+
+            // NOTE: You can apparently do typeof message.data == "string".
+            websocket.onmessage = function(message) {
+                // Start processing the server response.
+                // Convert the buffer so that each value is between -1 and 1.
+                // var audio = [];
+                // var buffArray = new Int16Array(message.data);
+                // for (var i = 0; i < buffArray.length; i++) {
+                //     audio[i] = (buffArray[i] > 0) ? buffArray[i]/32767 : buffArray[i]/32768;
+                // }
+
+                // var source = context.createBufferSource();
+                // var audioBuffer = context.createBuffer(1, audio.length, 44100);
+                // audioBuffer.getChannelData(0).set(audio);
+
+                // source.buffer = audioBuffer;
+                // source.connect(context.destination);
+                // source.start(0);
+
+                // console.log(new Int16Array(message.data));
+
+                context.decodeAudioData(message.data, function(buffer) {
+                    var source = context.createBufferSource();
+                    source.buffer = buffer;
+                    source.connect(context.destination);
+                    source.start(0);
+                }, function() {
+                    writeToScreen('<span style="color: red;">Error decoding audio data.</span>');
+                });
+            };
+
+            websocket.onerror = function(error) {
+                writeToScreen('<span style="color: red;">ERROR:</span> ' + error);
+            };
+        }
+    </script>
+</head>
+<body>
+    <h2>RAMP Streaming Test</h2>
+    <button id="send" onClick="javascript: streamMusic();">Stream Music</button>
+    <div id="output"></div>
+</body>
+</html>
