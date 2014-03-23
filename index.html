@@ -30,49 +30,154 @@
 			<script id="controls-template" type="text/x-jsrender">
 				<div id="mixer-{{:num}}" class="mixer">
 					<div class="v-align">
-						<div class="eq_low">
-							<label for="low">L:</label>
-							<input class="knob" data-width="33" data-height="33" data-min="-100" data-displayInput=false data-angleOffset=180 data-angleArc=360 data-fgColor="#66EE66" value="35">
-						</div>
 
-						<div class="eq_med">
-							<label for="med">M:</label>
-							<input class="knob" data-width="33" data-height="33" data-min="-100" data-displayInput=false data-angleOffset=180 data-angleArc=360 data-fgColor="#B4B83D" value="35">
-						</div>
 
-						<div class="eq_high">
-							<label for="high">H:</label>
-							<input class="knob" data-width="33" data-height="33" data-min="-100" data-displayInput=false data-angleOffset=180 data-angleArc=360 data-fgColor="#A13649" value="35">
-						</div>
 
-						<div class="volume">
-							<label for="range">Vol:</label>
-							<input type="range" min="0" max="100" id="slider" value="10" name="volume">
+
+
+
+
+						<div class="equalizers">
+						
+
+							<div class="eq_low">
+									<label for="low">L</label>
+											<input class="knob"	
+													data-cursor=true
+													data-skin="tron"
+													value="0"	
+													data-thickness=".5"								
+													data-width="33"  /* dial width.*/
+													data-height="33" /*  */
+													data-min="-100" /*  min value | default=0. */
+													data-max="100"											
+													stopper: true
+													data-displayPrevious=true /*default=false | true=displays the previous value with transparency. */
+													data-displayInput=false /*  default=true | false=hide input. */
+													data-angleArc=300 /*  arc size in degrees | default=360  */
+													data-angleOffset=-150 /* starting angle in degrees | default=0. */
+													data-thickness=".2"
+													data-bgColor="#FFFFFF"
+													data-fgColor="#66EE66" /*fgColor : foreground color.*/
+											>								
+												
+							</div>
+
+
+
+							<div class="eq_med">
+								<label for="med">M</label>		
+									<input class="knob" 
+											data-cursor=true
+											data-skin="tron"
+											value="0"	
+											data-thickness=".5"
+
+											data-width="33"  /* dial width.*/
+											data-height="33" /*  */
+											data-min="-100" /*  min value | default=0. */
+											data-max="100"											
+											stopper: true
+											data-displayPrevious=true /*default=false | true=displays the previous value with transparency. */
+											data-displayInput=false /*  default=true | false=hide input. */
+											data-angleArc=300 /*  arc size in degrees | default=360  */
+											data-angleOffset=-150 /* starting angle in degrees | default=0. */
+											data-thickness=".2"
+											data-bgColor="#FFFFFF"
+											data-fgColor="#B4B83D" 
+									>
+							</div>
+
+
+
+							<div class="eq_high">
+								<label for="high">H</label>
+										<input class="knob" 
+												data-cursor=true
+												data-skin="tron"="0"	
+												data-thickness=".5"
+
+												data-width="33"  /* dial width.*/
+												data-height="33" /*  */
+												data-min="-100" /*  min value | default=0. */
+												data-max="100"											
+												stopper: true
+												data-displayPrevious=true /*default=false | true=displays the previous value with transparency. */
+												data-displayInput=false /*  default=true | false=hide input. */
+												data-angleArc=300 /*  arc size in degrees | default=360  */
+												data-angleOffset=-150 /* starting angle in degrees | default=0. */
+												data-thickness=".2"
+												data-bgColor="#FFFFFF"data-fgColor="#A13649"
+										>
+							</div>
+					
+
 						</div>
+						<!-- /*equalizers End*/ -->
+
+
+
+
+						<div class="volume-balance">
+
+
+							<div class="balance">
+								<label for="range">L:</label>
+								<input type="range" min="-10" max="10" id="slider" value="0" name="volume">
+								<label for="range">:R</label>
+
+							</div>
+							<!-- /*balance End*/-->
+
+
+							<div class="volume">
+								<label for="range">V:</label>
+								<input type="range" min="0" max="11" id="slider" value="0" name="volume">
+							</div>
+							<!-- /*volume End*/-->
+
+
+						</div>
+						<!-- /*volume-balance End*/-->
+
+
+
 
 						<div class="mute-solo">
-							<div class="onoff">
-								<label for="mute-switch-{{:num}}">Mute:</label>
 
-								<input type="checkbox" name="onoff" id="mute-switch-{{:num}}">
+									<div class="onoff">
+										<label for="mute-switch-{{:num}}">Mute:</label>
 
-								<label class="onoff-label" for="mute-switch-{{:num}}">
-									<div class="onoff-inner"></div>
-									<div class="onoff-switch"></div>
-								</label>
-							</div>
+										<input type="checkbox" name="onoff" id="mute-switch-{{:num}}">
 
-							<div class="onoff">
-								<label for="solo-switch-{{:num}}">Solo:</label>
+										<label class="onoff-label" for="mute-switch-{{:num}}">
+											<div class="onoff-inner"></div>
+											<div class="onoff-switch"></div>
+										</label>
+									</div>
+									<!--/*Mute End*/-->
 
-								<input type="checkbox" name="onoff" id="solo-switch-{{:num}}">
 
-								<label class="onoff-label" for="solo-switch-{{:num}}">
-									<div class="onoff-inner"></div>
-									<div class="onoff-switch"></div>
-								</label>
-							</div>
+
+									<div class="onoff">
+										<label for="solo-switch-{{:num}}">Solo:</label>
+
+										<input type="checkbox" name="onoff" id="solo-switch-{{:num}}">
+
+										<label class="onoff-label" for="solo-switch-{{:num}}">
+											<div class="onoff-inner"></div>
+											<div class="onoff-switch"></div>
+										</label>
+									</div>
+									<!--/*Solo End*/-->
+
 						</div>
+						<!--/*mute-solo End*/-->
+
+
+
+
+
 					</div>
 					<div class="track-name"><span>{{:name}}</span></div>
 				</div>
