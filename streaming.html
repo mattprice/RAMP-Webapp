@@ -5,6 +5,7 @@
     <title>RAMP Streaming Test</title>
     <script type="text/javascript">
         var websocket = null;
+        var context, source;
 
         function writeToScreen(message) {
             var pre = document.createElement("p");
@@ -14,8 +15,6 @@
         };
 
         function streamMusic() {
-            var context;
-
             try {
                 if (window.AudioContext) {
                     // Official HTML5 AudioContext
@@ -65,7 +64,7 @@
                 // console.log(new Int16Array(message.data));
 
                 context.decodeAudioData(message.data, function(buffer) {
-                    var source = context.createBufferSource();
+                    source = context.createBufferSource();
                     source.buffer = buffer;
                     source.connect(context.destination);
                     source.start(0);
@@ -83,6 +82,7 @@
 <body>
     <h2>RAMP Streaming Test</h2>
     <button id="send" onClick="javascript: streamMusic();">Stream Music</button>
+    <button id="send" onClick="javascript: source.stop(0);">Stop</button>
     <div id="output"></div>
 </body>
 </html>
