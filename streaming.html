@@ -5,7 +5,8 @@
     <title>RAMP Streaming Test</title>
     <script type="text/javascript">
         var websocket = null;
-        var context, source;
+        var context, audioStack = [];
+        var nextTime = 0;
 
         function writeToScreen(message) {
             var pre = document.createElement("p");
@@ -16,16 +17,8 @@
 
         function streamMusic() {
             try {
-                if (window.AudioContext) {
-                    // Official HTML5 AudioContext
-                    context = new AudioContext();
-                } else if (window.webkitAudioContext) {
-                    // Chrome, Safari, Opera (?)
-                    context = new webkitAudioContext();
-                } else if (window.MozWebSocket) {
-                    // Firefox
-                    context = window.MozWebSocket;
-                }
+                window.AudioContext = window.AudioContext || window.webkitAudioContext || window.MozWebSocket;
+                context = new AudioContext();
             } catch(e) {
                 writeToScreen("Web Audio API is not supported in this browser.");
             }
@@ -45,32 +38,23 @@
 
             // NOTE: You can apparently do typeof message.data == "string".
             websocket.onmessage = function(message) {
-                // Start processing the server response.
-                // Convert the buffer so that each value is between -1 and 1.
-                // var audio = [];
-                // var buffArray = new Int16Array(message.data);
-                // for (var i = 0; i < buffArray.length; i++) {
-                //     audio[i] = (buffArray[i] > 0) ? buffArray[i]/32767 : buffArray[i]/32768;
-                // }
+                // Convert the message data so that each value is between -1 and 1.
+                var audio = [];
+                var intArray = new Int16Array(message.data);
+                for (var i = 0; i < intArray.length; i++) {
+                    audio[i] = (intArray[i] > 0) ? intArray[i]/32767 : intArray[i]/32768;
+                }
 
-                // var source = context.createBufferSource();
-                // var audioBuffer = context.createBuffer(1, audio.length, 44100);
-                // audioBuffer.getChannelData(0).set(audio);
+                // Create a new AudioBuffer.
+                var source = context.createBufferSource();
+                var buffer = context.createBuffer(1, audio.length, 44100);
+                buffer.getChannelData(0).set(audio);
 
-                // source.buffer = audioBuffer;
-                // source.connect(context.destination);
-                // source.start(0);
-
-                // console.log(new Int16Array(message.data));
-
-                context.decodeAudioData(message.data, function(buffer) {
-                    source = context.createBufferSource();
-                    source.buffer = buffer;
-                    source.connect(context.destination);
-                    source.start(0);
-                }, function() {
-                    writeToScreen('<span style="color: red;">Error decoding audio data.</span>');
-                });
+                // Schedule the AudioBuffer for playback.
+                source.buffer = buffer;
+                source.connect(context.destination);
+                source.start(nextTime);
+                nextTime += source.buffer.duration;
             };
 
             websocket.onerror = function(error) {
@@ -82,7 +66,7 @@
 <body>
     <h2>RAMP Streaming Test</h2>
     <button id="send" onClick="javascript: streamMusic();">Stream Music</button>
-    <button id="send" onClick="javascript: source.stop(0);">Stop</button>
+    <!-- <button id="send" onClick="javascript: source.stop(0);">Stop</button> -->
     <div id="output"></div>
 </body>
 </html>
