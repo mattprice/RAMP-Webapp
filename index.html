@@ -155,12 +155,12 @@
 		$.getJSON(trackURL, function(trackList) {
 			// Render the controls.
 			$("#track-controls").html(
-				$("#controls-template").render(trackList)
+				$("#controls-template").render(trackList["tracks"])
 			);
 
 			// Render the waveforms.
 			$("#track-waveforms").html(
-				$("#waveforms-template").render(trackList)
+				$("#waveforms-template").render(trackList["tracks"])
 			);
 
 

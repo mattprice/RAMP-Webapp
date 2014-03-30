@@ -23,8 +23,12 @@
                 writeToScreen("Web Audio API is not supported in this browser.");
             }
 
+            // See if a local server is started.
+            // var socketURL = "127.0.0.1:8080";
+            var socketURL = "ramp-server.embercode.com";
+
             writeToScreen("Beginning socket connection.");
-            websocket = new WebSocket("ws://127.0.0.1:8080/stream");
+            websocket = new WebSocket("ws://" + socketURL + "/stream");
             websocket.binaryType = "arraybuffer";
             output = document.getElementById("output");
 
