@@ -14,7 +14,7 @@
 </head>
 <body>
 	<header>
-		<h1>Project Title</h1>
+		<h1></h1>
 	</header>
 
 	<div id="content">
@@ -54,23 +54,8 @@
 					</div>
 
 					<div class="mute-solo">
-						<div class="onoff">
-							<label for="mute-switch-{{:num}}">Mute:</label>
-							<input type="checkbox" name="onoff" id="mute-switch-{{:num}}">
-							<label class="onoff-label" for="mute-switch-{{:num}}">
-								<div class="onoff-inner"></div>
-								<div class="onoff-switch"></div>
-							</label>
-						</div>
-
-						<div class="onoff">
-							<label for="solo-switch-{{:num}}">Solo:</label>
-							<input type="checkbox" name="onoff" id="solo-switch-{{:num}}">
-							<label class="onoff-label" for="solo-switch-{{:num}}">
-								<div class="onoff-inner"></div>
-								<div class="onoff-switch"></div>
-							</label>
-						</div>
+						<button class="mute-button">M</button>
+						<button class="solo-button">S</button>
 					</div>
 				</div> <!-- .v-align -->
 
@@ -147,36 +132,21 @@
 					return value + '%';
 				},*/
 				draw : function () {
-					this.cursorExt = 0.3;
+					this.cursorExt = 0.25;
 
 					var a = this.arc(this.cv)  // Arc
 						 , pa                    // Previous arc
 						 , r = 1;
 
 					this.g.lineWidth = this.lineWidth;
-
-					if (this.o.displayPrevious) {
-						pa = this.arc(this.v);
-						this.g.beginPath();
-						this.g.strokeStyle = this.pColor;
-						this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, pa.s, pa.e, pa.d);
-						this.g.stroke();
-
-						this.g.beginPath();
-						this.g.strokeStyle = r ? this.o.fgColor : this.fgColor ;
-						this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, a.s, a.e, a.d);
-						this.g.stroke();
-
-						this.g.lineWidth = 2;
-						this.g.beginPath();
-						this.g.strokeStyle = this.o.fgColor;
-						this.g.arc( this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
-						this.g.stroke();
-
-						return false;
-					}
 				}
-			})
+			});
+
+			// Toggle mute/solo buttons when clicked.
+			$(".mute-button, .solo-button").click(function() {
+				var elem = $(this);
+				elem.toggleClass("active");
+			});
 		});
 
 		// Don't let the controls scoll vertically.
