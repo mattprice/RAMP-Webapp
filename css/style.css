@@ -9,7 +9,7 @@ body {
 	padding: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #ddd;
+	background-color: #bbb;
 }
 
 /* Page Subtitle */
@@ -118,7 +118,7 @@ nav li a:hover {
 
 .track-name {
 	position: absolute;
-	top: 5px;
+	top: 10px;
 	left: 490px; /* Width of track-waveforms + 15px */
 	display: inline;
 	width: 100%;
@@ -127,9 +127,10 @@ nav li a:hover {
 .track-name span {
 	padding: .1em .3em;
 	border-radius: 3px;
-	background-color: rgba(193,229,247,.75);
-	color: #222;
+	color: #fff;
 	font-size: .75em;
+	text-shadow: #555 1px 1px 2px;
+	font-weight: bold;
 }
 
 .v-align {
@@ -228,14 +229,44 @@ nav li a:hover {
 
 .track {
 	display: inline-table;
-	padding: 10px 15px;
+	padding: 10px 10px;
 	height: 75px;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #aaa;
 	line-height: 0; /* Keeps the height measurements honest */
 }
 
 .track:last-child {
 	border-bottom: none;
+}
+
+.waveform {
+	border-radius: 10px;
+	padding: 10px 5px 10px 5px;
+}
+
+/* Waveform Colors */
+.wf-emerald {
+	background-color: rgba(46,204,113,.50);
+}
+
+.wf-river {
+	background-color: rgba(52,152,219,.50);
+}
+
+.wf-amethyst {
+	background-color: rgba(155,89,182,.50);
+}
+
+.wf-sunflower {
+	background-color: rgba(241,196,15,.50);
+}
+
+.wf-orange {
+	background-color: rgba(243,156,18,.50);
+}
+
+.wf-alizarin {
+	background-color: rgba(231,76,60,.50);
 }
 
 

@@ -66,7 +66,7 @@
 		<!-- Right Section: Waveforms  -->
 		<div id="track-waveforms" style="display:none">
 			<div id="track-{{:num}}" class="track">
-				<img src="img/waveform.png" alt="Waveform" width="1320">
+				<img src="{{:waveform_path}}" class="waveform {{:~waveformStyle(num)}}" alt="">
 			</div>
 		</div>
 	</div> <!-- .content -->
@@ -96,6 +96,16 @@
 				break;
 		}
 
+		// A list of the possible CSS styles for each waveform.
+		var waveformStyles = [
+			"wf-emerald",
+			"wf-river",
+			"wf-amethyst",
+			"wf-sunflower",
+			"wf-orange",
+			"wf-alizarin"
+		];
+
 		// Request the track information (in JSON format) from the webserver.
 		// This will eventually get requested from the RAMP Server instead.
 		$.getJSON(trackURL, function(trackList) {
@@ -113,7 +123,12 @@
 			// Render the track waveforms.
 			var waveformsTemplate = $.templates($("#track-waveforms").html());
 			$("#track-waveforms").html(
-				waveformsTemplate.render(trackList["tracks"])
+				waveformsTemplate.render(trackList["tracks"], {
+					// Assigns a different background color to each waveform.
+					waveformStyle:function(num) {
+						return waveformStyles[num % waveformStyles.length];
+					}
+				})
 			).css("display", "block");
 
 			// Render the knobs.
