@@ -96,7 +96,7 @@ nav li a:hover {
 	padding-top: 15px;
 	width: 530px;
    background: rgb(131,131,131);
-	box-shadow: 0 1px 5px 2px rgb(52,52,53);
+	box-shadow: 0 1px 3px 2px #444;
 }
 
 .mixer {
@@ -162,12 +162,21 @@ nav li a:hover {
 	display: block;
 	text-align: center;
 	font-weight: bold;
+	text-shadow: #555 0px 1px 2px;
 }
 
 .eq_low,
 .eq_med,
 .eq_high {
 	margin-right: 15px;
+}
+
+.volume-balance label {
+	text-shadow: #555 0px 1px 2px;
+}
+
+.volume-balance img {
+	vertical-align: middle;
 }
 
 .balance {
