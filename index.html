@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Virtual Studio</title>
+	<title>RAMP</title>
 
 	<link rel="stylesheet" type="text/css" href="css/normalize.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -124,9 +124,9 @@
 		// This will eventually get requested from the RAMP Server instead.
 		$.getJSON(trackURL, function(trackList) {
 			// Render the song title.
-			$("h1").html(
-				$.templates("{{:title}}").render(trackList)
-			);
+			var songTitle = $.templates("{{:title}}").render(trackList);
+			$("h1").html(songTitle);
+			document.title = "RAMP - " + songTitle;
 
 			// Render the track controls.
 			var controlsTemplate = $.templates($("#track-controls").html());
