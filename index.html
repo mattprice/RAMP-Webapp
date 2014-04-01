@@ -4,12 +4,15 @@
 	<meta charset="utf-8">
 	<title>Virtual Studio</title>
 
+
 	<link rel="stylesheet" type="text/css" href="css/normalize.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 	<script type="text/javascript" src="js/jsrender.min.js"></script>
 	<script src="js/jquery.knob.min.js"></script>
+	<script src="js/jquery-1.7.2.min.js"></script>  
+	<script src="js/jquery-ui-1.8.21.custom.min.js"></script>  
 </head>
 <body>
 
@@ -29,160 +32,76 @@
 		<div id="track-controls">
 			<script id="controls-template" type="text/x-jsrender">
 				<div id="mixer-{{:num}}" class="mixer">
+
 					<div class="v-align">
-
-
-
-
-
-
-
+						<!-- /*equalizers Start*/ -->
 						<div class="equalizers">
-						
-
 							<div class="eq_low">
-									<label for="low">L</label>
-											<input class="knob"	
-													data-cursor=true
-													data-skin="tron"
-													value="0"	
-													data-thickness=".5"								
-													data-width="33"  /* dial width.*/
-													data-height="33" /*  */
-													data-min="-100" /*  min value | default=0. */
-													data-max="100"											
-													stopper: true
-													data-displayPrevious=true /*default=false | true=displays the previous value with transparency. */
-													data-displayInput=false /*  default=true | false=hide input. */
-													data-angleArc=300 /*  arc size in degrees | default=360  */
-													data-angleOffset=-150 /* starting angle in degrees | default=0. */
-													data-thickness=".2"
-													data-bgColor="#FFFFFF"
-													data-fgColor="#66EE66" /*fgColor : foreground color.*/
-											>								
-												
+								<label for="low">L</label>
+								<input class="knob" 
+								data-angleArc=300 data-angleOffset=-150 value="0" data-max="100" data-min="-100" data-width="40" data-height="33" data-thickness=".45" stopper=true data-displayInput=false data-bgColor="#FFFFFF" data-fgColor="#4DDB4D">
 							</div>
-
-
 
 							<div class="eq_med">
 								<label for="med">M</label>		
-									<input class="knob" 
-											data-cursor=true
-											data-skin="tron"
-											value="0"	
-											data-thickness=".5"
-
-											data-width="33"  /* dial width.*/
-											data-height="33" /*  */
-											data-min="-100" /*  min value | default=0. */
-											data-max="100"											
-											stopper: true
-											data-displayPrevious=true /*default=false | true=displays the previous value with transparency. */
-											data-displayInput=false /*  default=true | false=hide input. */
-											data-angleArc=300 /*  arc size in degrees | default=360  */
-											data-angleOffset=-150 /* starting angle in degrees | default=0. */
-											data-thickness=".2"
-											data-bgColor="#FFFFFF"
-											data-fgColor="#B4B83D" 
-									>
-							</div>
-
-
+								<input class="knob" data-angleArc=300 data-angleOffset=-150 value="0" data-max="100" data-min="-100" data-width="40" data-height="33" data-thickness=".45"stopper=true data-displayInput=false data-bgColor="#FFFFFF" data-fgColor="#0099FF">
+					 		</div>
 
 							<div class="eq_high">
 								<label for="high">H</label>
-										<input class="knob" 
-												data-cursor=true
-												data-skin="tron"="0"	
-												data-thickness=".5"
-
-												data-width="33"  /* dial width.*/
-												data-height="33" /*  */
-												data-min="-100" /*  min value | default=0. */
-												data-max="100"											
-												stopper: true
-												data-displayPrevious=true /*default=false | true=displays the previous value with transparency. */
-												data-displayInput=false /*  default=true | false=hide input. */
-												data-angleArc=300 /*  arc size in degrees | default=360  */
-												data-angleOffset=-150 /* starting angle in degrees | default=0. */
-												data-thickness=".2"
-												data-bgColor="#FFFFFF"data-fgColor="#A13649"
-										>
-							</div>
-					
-
+								<input class="knob" data-angleArc=300 data-angleOffset=-150 value="0" data-max="100" data-min="-100" data-width="40" data-height="33" data-thickness=".45" stopper=true data-displayInput=false data-bgColor="#FFFFFF" data-fgColor="#D14719">
+							</div>		
 						</div>
 						<!-- /*equalizers End*/ -->
 
 
-
-
+						<!-- /*volume-balance Start*/-->
 						<div class="volume-balance">
-
-
 							<div class="balance">
-								<label for="range">L:</label>
+								<label for="range">L</label>
 								<input type="range" min="-10" max="10" id="slider" value="0" name="volume">
-								<label for="range">:R</label>
-
+								<label for="range">R</label>
 							</div>
-							<!-- /*balance End*/-->
-
 
 							<div class="volume">
-								<label for="range">V:</label>
-								<input type="range" min="0" max="11" id="slider" value="0" name="volume">
+								<input type="image" src="img/vol.png" width="20" height="20"> 
+								<input type="range"  min="0" max="11" value="0" id="slider" name="volume">
+								<input type="image" src="img/volume.png" width="20" height="20">
 							</div>
-							<!-- /*volume End*/-->
-
-
 						</div>
 						<!-- /*volume-balance End*/-->
 
-
-
-
+						<!--/*mute-solo Start*/-->
 						<div class="mute-solo">
+							<div class="onoff">
+								<label for="mute-switch-{{:num}}">Mute:</label>
+								<input type="checkbox" name="onoff" id="mute-switch-{{:num}}">
+								<label class="onoff-label" for="mute-switch-{{:num}}">
+									<div class="onoff-inner"></div>
+									<div class="onoff-switch"></div>
+								</label>
+							</div>
 
-									<div class="onoff">
-										<label for="mute-switch-{{:num}}">Mute:</label>
-
-										<input type="checkbox" name="onoff" id="mute-switch-{{:num}}">
-
-										<label class="onoff-label" for="mute-switch-{{:num}}">
-											<div class="onoff-inner"></div>
-											<div class="onoff-switch"></div>
-										</label>
-									</div>
-									<!--/*Mute End*/-->
-
-
-
-									<div class="onoff">
-										<label for="solo-switch-{{:num}}">Solo:</label>
-
-										<input type="checkbox" name="onoff" id="solo-switch-{{:num}}">
-
-										<label class="onoff-label" for="solo-switch-{{:num}}">
-											<div class="onoff-inner"></div>
-											<div class="onoff-switch"></div>
-										</label>
-									</div>
-									<!--/*Solo End*/-->
-
+							<div class="onoff">
+								<label for="solo-switch-{{:num}}">Solo:</label>
+								<input type="checkbox" name="onoff" id="solo-switch-{{:num}}">
+								<label class="onoff-label" for="solo-switch-{{:num}}">
+									<div class="onoff-inner"></div>
+									<div class="onoff-switch"></div>
+								</label>
+							</div>
 						</div>
 						<!--/*mute-solo End*/-->
 
-
-
-
-
 					</div>
+					<!-- /*v-align End*/ -->
+
 					<div class="track-name"><span>{{:name}}</span></div>
 				</div>
+				<!-- /*mixer End*/ -->
 			</script>
-		</div> <!-- #track-controls -->
+		</div> 
+		<!-- #track-controls end-->
 
 		<!-- Right Section: Waveforms  -->
 		<div id="track-waveforms">
@@ -191,8 +110,10 @@
 					<img src="img/waveform.png" width="1320px">
 				</div>
 			</script>
-		</div> <!-- #track-waveforms -->
-	</div> <!-- .content -->
+		</div> 
+		<!-- #track-waveforms end-->
+	</div>
+	<!-- .content end -->
 
 	<footer>
 		<div id="preset-list">
@@ -242,6 +163,8 @@
 				$("#waveforms-template").render(trackList)
 			);
 
+
+
 			// Render the knobs.
 			$(".knob").knob({
 				change : function (value) {
@@ -288,6 +211,8 @@
 					}
 				}
 			})
+
+
 		});
 
 		// Random fake song title, just for giggles.
