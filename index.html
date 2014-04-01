@@ -18,75 +18,70 @@
 
 	<div id="content">
 		<!-- Left Section: Track Controls -->
-		<div id="track-controls">
-			<script id="controls-template" type="text/x-jsrender">
-				<div id="mixer-{{:num}}" class="mixer">
-					<div class="v-align">
-						<div class="equalizers">
-							<div class="eq_low">
-								<label for="low">L</label>
-								<input class="knob" data-angleArc=300 data-angleOffset=-150 value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor=true data-displayInput=false data-bgColor="#555" data-fgColor="#3498db">
-							</div>
-
-							<div class="eq_med">
-								<label for="med">M</label>
-								<input class="knob" data-angleArc=300 data-angleOffset=-150 value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor=true data-displayInput=false data-bgColor="#555" data-fgColor="#3498db">
-					 		</div>
-
-							<div class="eq_high">
-								<label for="high">H</label>
-								<input class="knob" data-angleArc=300 data-angleOffset=-150 value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor=true data-displayInput=false data-bgColor="#555" data-fgColor="#3498db">
-							</div>
+		<div id="track-controls" style="display:none">
+			<div id="mixer-{{:num}}" class="mixer">
+				<div class="v-align">
+					<div class="equalizers">
+						<div class="eq_low">
+							<label for="low">L</label>
+							<input class="knob" data-angleArc="300" data-angleOffset="-150" value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor="true" data-displayInput="false" data-bgColor="#555" data-fgColor="#3498db">
 						</div>
 
+						<div class="eq_med">
+							<label for="med">M</label>
+							<input class="knob" data-angleArc="300" data-angleOffset="-150" value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor="true" data-displayInput="false" data-bgColor="#555" data-fgColor="#3498db">
+				 		</div>
 
-						<div class="volume-balance">
-							<div class="balance">
-								<label for="range">L</label>
-								<input type="range" min="-10" max="10" id="slider" value="0" name="volume">
-								<label for="range">R</label>
-							</div>
+						<div class="eq_high">
+							<label for="high">H</label>
+							<input class="knob" data-angleArc="300" data-angleOffset="-150" value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor="true" data-displayInput="false" data-bgColor="#555" data-fgColor="#3498db">
+						</div>
+					</div>
 
-							<div class="volume">
-								<input type="image" src="img/vol.png" width="20" height="20">
-								<input type="range"  min="0" max="11" value="0" id="slider" name="volume">
-								<input type="image" src="img/volume.png" width="20" height="20">
-							</div>
+					<div class="volume-balance">
+						<div class="balance">
+							<label for="range">L</label>
+							<input type="range" min="-10" max="10" id="slider" value="0" name="volume">
+							<label for="range">R</label>
 						</div>
 
-						<div class="mute-solo">
-							<div class="onoff">
-								<label for="mute-switch-{{:num}}">Mute:</label>
-								<input type="checkbox" name="onoff" id="mute-switch-{{:num}}">
-								<label class="onoff-label" for="mute-switch-{{:num}}">
-									<div class="onoff-inner"></div>
-									<div class="onoff-switch"></div>
-								</label>
-							</div>
-
-							<div class="onoff">
-								<label for="solo-switch-{{:num}}">Solo:</label>
-								<input type="checkbox" name="onoff" id="solo-switch-{{:num}}">
-								<label class="onoff-label" for="solo-switch-{{:num}}">
-									<div class="onoff-inner"></div>
-									<div class="onoff-switch"></div>
-								</label>
-							</div>
+						<div class="volume">
+							<input type="image" src="img/vol.png" width="20" height="20">
+							<input type="range"  min="0" max="11" value="0" id="slider" name="volume">
+							<input type="image" src="img/volume.png" width="20" height="20">
 						</div>
-					</div> <!-- /*v-align End*/ -->
+					</div>
 
-					<div class="track-name"><span>{{:name}}</span></div>
-				</div> <!-- /*mixer End*/ -->
-			</script>
+					<div class="mute-solo">
+						<div class="onoff">
+							<label for="mute-switch-{{:num}}">Mute:</label>
+							<input type="checkbox" name="onoff" id="mute-switch-{{:num}}">
+							<label class="onoff-label" for="mute-switch-{{:num}}">
+								<div class="onoff-inner"></div>
+								<div class="onoff-switch"></div>
+							</label>
+						</div>
+
+						<div class="onoff">
+							<label for="solo-switch-{{:num}}">Solo:</label>
+							<input type="checkbox" name="onoff" id="solo-switch-{{:num}}">
+							<label class="onoff-label" for="solo-switch-{{:num}}">
+								<div class="onoff-inner"></div>
+								<div class="onoff-switch"></div>
+							</label>
+						</div>
+					</div>
+				</div> <!-- .v-align -->
+
+				<div class="track-name"><span>{{:name}}</span></div>
+			</div> <!-- .mixer -->
 		</div> <!-- #track-controls-->
 
 		<!-- Right Section: Waveforms  -->
-		<div id="track-waveforms">
-			<script id="waveforms-template" type="text/x-jsrender">
-				<div id="track-{{:num}}" class="track">
-					<img src="img/waveform.png" width="1320px">
-				</div>
-			</script>
+		<div id="track-waveforms" style="display:none">
+			<div id="track-{{:num}}" class="track">
+				<img src="img/waveform.png" width="1320px">
+			</div>
 		</div>
 	</div> <!-- .content -->
 
@@ -128,15 +123,22 @@
 		// Request the track information (in JSON format) from the webserver.
 		// This will eventually get requested from the RAMP Server instead.
 		$.getJSON(trackURL, function(trackList) {
-			// Render the controls.
-			$("#track-controls").html(
-				$("#controls-template").render(trackList["tracks"])
+			// Render the song title.
+			$("h1").html(
+				$.templates("{{:title}}").render(trackList)
 			);
 
-			// Render the waveforms.
+			// Render the track controls.
+			var controlsTemplate = $.templates($("#track-controls").html());
+			$("#track-controls").html(
+				controlsTemplate.render(trackList["tracks"])
+			).css("display", "block");
+
+			// Render the track waveforms.
+			var waveformsTemplate = $.templates($("#track-waveforms").html());
 			$("#track-waveforms").html(
-				$("#waveforms-template").render(trackList["tracks"])
-			);
+				waveformsTemplate.render(trackList["tracks"])
+			).css("display", "block");
 
 			// Render the knobs.
 			$(".knob").knob({
@@ -185,22 +187,6 @@
 				}
 			})
 		});
-
-		// Random fake song title, just for giggles.
-		var songTitles = [
-			"A Touch Of Your Highway",
-			"Fears Hurt",
-			"I Need Problems",
-			"Impossible Lies",
-			"Learning Indifference",
-			"Manual Ghost",
-			"Infinite Indecision",
-			"Smooth Histerics",
-			"Surprises From Heaven",
-			"Thorny Advantages",
-			"Undeniable Lunacy"
-		];
-		$("h1").html(songTitles[Math.floor(Math.random() * songTitles.length)]);
 
 		// Don't let the controls scoll vertically.
 		$(window).scroll(function() {
