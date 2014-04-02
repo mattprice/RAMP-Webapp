@@ -240,32 +240,41 @@ nav li a:hover {
 }
 
 .waveform {
+	padding: 15px 5px 5px 5px;
+	height: 53px;
+	border: 1px solid rgba(0,0,0,.25);
 	border-radius: 10px;
-	padding: 10px 5px 10px 5px;
+	background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,.1) 100%); /* FF3.6+ */
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,.1) 100%); /* Chrome10+, Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,.1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,.1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.1) 100%); /* W3C */
+	box-shadow: 0 0 2px 0 #888;
 }
 
 /* Waveform Colors */
-.wf-emerald {
+.wf-green {
 	background-color: rgba(46,204,113,.50);
+
 }
 
-.wf-river {
+.wf-blue {
 	background-color: rgba(52,152,219,.50);
 }
 
-.wf-amethyst {
+.wf-purple {
 	background-color: rgba(155,89,182,.50);
 }
 
-.wf-sunflower {
-	background-color: rgba(241,196,15,.50);
+.wf-yellow {
+	background-color: rgba(255,255,0,.5)
 }
 
 .wf-orange {
-	background-color: rgba(243,156,18,.50);
+	background-color: rgba(255,165,0,.5);
 }
 
-.wf-alizarin {
+.wf-red {
 	background-color: rgba(231,76,60,.50);
 }
 
