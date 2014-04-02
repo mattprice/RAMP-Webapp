@@ -72,12 +72,18 @@
 	</div> <!-- .content -->
 
 	<footer>
+		<div id="master-volume">
+			<img src="img/vol-min.png" alt="" width="11" height="18">
+			<input type="range" min="0" max="100" value="10" id="master-volume-slider" name="master-volume-slider">
+			<img src="img/vol-max.png" alt="" width="24" height="18">
+		</div>
+
 		<div id="master-play">
 			<input type="image" src="img/play.png" alt="Play" data-status="paused" width="50" height="50">
 		</div>
 
-		<div id="master-volume">
-			<label for="master-volume-slider">Volume:</label>
+		<div id="master-scrubber" style="opacity:0">
+			<label for="master-volume-slider">Scrubber:</label>
 			<input type="range" min="0" max="100" value="10" id="master-volume-slider" name="master-volume-slider">
 		</div>
 	</footer>

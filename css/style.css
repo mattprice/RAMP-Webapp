@@ -180,6 +180,7 @@ nav li a:hover {
 	text-shadow: #555 0px 1px 2px;
 }
 
+#master-volume img,
 .volume-balance img {
 	vertical-align: middle;
 }
@@ -302,13 +303,13 @@ footer {
 
 #master-play,
 #master-volume,
-#preset-list {
+#master-scrubber {
 	display: inline;
 	margin-top: 205px;
 }
 
 #master-play {
-	margin: 0 20px;
+	margin: 0 50px;
 }
 
 #master-play input {
