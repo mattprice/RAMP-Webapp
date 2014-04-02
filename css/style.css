@@ -206,6 +206,7 @@ nav li a:hover {
 	background-color: #555;
 	text-align: center;
 	font-size: .95em;
+	outline: none;
 }
 
 .solo-button.active {
