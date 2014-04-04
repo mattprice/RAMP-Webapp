@@ -199,7 +199,7 @@ nav li a:hover {
 
 .mute-solo button {
 	display: block;
-	margin: 10px;
+	margin: 10px 5px;
 	width: 30px;
 	height: 30px;
 	border: 1px solid #444;
