@@ -67,7 +67,7 @@
 		<!-- Right Section: Waveforms  -->
 		<div id="track-waveforms" style="display:none">
 			<div id="track-{{:num}}" class="track">
-				<img src="{{:waveform_path}}" class="waveform {{:~waveformStyle(num)}}" alt="">
+				<img src="{{:waveform_path}}" class="waveform {{:~waveformStyle(num)}}" alt="" width="{{:~waveformWidth(length)}}">
 			</div>
 		</div>
 	</div> <!-- .content -->
@@ -131,9 +131,13 @@
 			var waveformsTemplate = $.templates($("#track-waveforms").html());
 			$("#track-waveforms").html(
 				waveformsTemplate.render(trackList["tracks"], {
-					// Assigns a different background color to each waveform.
 					waveformStyle:function(num) {
+						// Assigns a different background color to each waveform.
 						return waveformStyles[num % waveformStyles.length];
+					},
+					waveformWidth:function(length) {
+						// Returns the image width: length (in seconds) * 30px
+						return length * 30;
 					}
 				})
 			).css("display", "block");
