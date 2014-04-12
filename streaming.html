@@ -5,7 +5,7 @@
     <title>RAMP Streaming Test</title>
     <script type="text/javascript">
         var websocket = null;
-        var context, audioStack = [];
+        var context;
         var nextTime = 0;
 
         function writeToScreen(message) {
@@ -24,8 +24,8 @@
             }
 
             // See if a local server is started.
-            // var socketURL = "127.0.0.1:8080";
-            var socketURL = "ramp-server.embercode.com";
+            var socketURL = "127.0.0.1:8080";
+            // var socketURL = "ramp-server.embercode.com";
 
             writeToScreen("Beginning socket connection.");
             websocket = new WebSocket("ws://" + socketURL + "/stream");
@@ -42,23 +42,32 @@
 
             // NOTE: You can apparently do typeof message.data == "string".
             websocket.onmessage = function(message) {
+                var leftChannel = [], rightChannel = [];
+
                 // Convert the message data so that each value is between -1 and 1.
-                var audio = [];
                 var intArray = new Int16Array(message.data);
                 for (var i = 0; i < intArray.length; i++) {
-                    audio[i] = (intArray[i] > 0) ? intArray[i]/32767 : intArray[i]/32768;
+                    var val = (intArray[i] > 0) ? intArray[i]/32767 : intArray[i]/32768;
+
+                    // De-interleave the channels.
+                    if (i % 2 == 0) {
+                        leftChannel.push(val);
+                    } else {
+                        rightChannel.push(val);
+                    }
                 }
 
                 // Create a new AudioBuffer.
                 var source = context.createBufferSource();
-                var buffer = context.createBuffer(1, audio.length, 44100);
-                buffer.getChannelData(0).set(audio);
-
-                // Schedule the AudioBuffer for playback.
+                var buffer = context.createBuffer(2, leftChannel.length, 48000);
+                buffer.getChannelData(0).set(leftChannel);
+                buffer.getChannelData(1).set(rightChannel);
                 source.buffer = buffer;
                 source.connect(context.destination);
+
+                // Schedule the AudioBuffer for playback.
                 source.start(nextTime);
-                nextTime += source.buffer.duration;
+                nextTime += buffer.duration;
             };
 
             websocket.onerror = function(error) {
