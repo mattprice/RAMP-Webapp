@@ -233,34 +233,37 @@
 
 			// Setup the mute/solo buttons.
 			$(".mute-button").click(function() {
-				// Toggle the mute button.
 				var elem = $(this);
-				elem.toggleClass("active");
-
-				// "Disable" the waveform.
 				var num = elem.attr("data-track");
-				$("#track-" + num + " img").toggleClass("isMuted");
+
+				// Alert the websocket, toggle the button styles, and toggle the waveform styles.
+				if (elem.hasClass("enabled")) {
+					websocket.send("/track" + num + "/mute 0");
+					elem.removeClass("enabled");
+					$("#track-" + num + " img").removeClass("isMuted");
+				} else {
+					websocket.send("/track" + num + "/mute 1");
+					elem.addClass("enabled");
+					$("#track-" + num + " img").addClass("isMuted");
+				}
 			});
 
 			// TODO: I'm not certain this is entirely efficient, but it works.
 			$(".solo-button").click(function() {
 				// Toggle the solo button.
 				var elem = $(this);
-				elem.toggleClass("active");
-
-				// Mark this waveform as not-to-be-disabled.
 				var num = elem.attr("data-track");
-				$("#track-" + num + " img").toggleClass("isSolo");
 
-				// Disable all other tracks.
-				$(".waveform").each(function() {
-					var wf = $(this);
-					if ( !wf.hasClass("isSolo") ) {
-						wf.addClass("notSolo");
-					} else {
-						wf.removeClass("notSolo");
-					}
-				});
+				// Alert the websocket, toggle the button styles, and toggle the waveform styles.
+				if (elem.hasClass("enabled")) {
+					websocket.send("/track" + num + "/solo 0");
+					elem.removeClass("enabled");
+					$("#track-" + num + " img").removeClass("isSolo");
+				} else {
+					websocket.send("/track" + num + "/solo 1");
+					elem.addClass("enabled");
+					$("#track-" + num + " img").addClass("isSolo");
+				}
 
 				// If there are no more soloed tracks, re-enable everything.
 				if ( $(".isSolo").length === 0 ) {
@@ -268,8 +271,21 @@
 						$(this).removeClass("notSolo");
 					});
 				}
-			});
-		});
+
+				// Otherwise, visually disable all other tracks.
+				else {
+					$(".waveform").each(function() {
+						var wf = $(this);
+						if ( !wf.hasClass("isSolo") ) {
+							wf.addClass("notSolo");
+						} else {
+							wf.removeClass("notSolo");
+						}
+					});
+				}
+			}); // $(".solo-button")
+
+		}); // $.getJSON()
 
 		// Don't let the controls scoll vertically.
 		$(window).scroll(function() {

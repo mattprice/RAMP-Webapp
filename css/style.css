@@ -209,12 +209,12 @@ nav li a:hover {
 	outline: none;
 }
 
-.solo-button.active {
+.solo-button.enabled {
 	background-color: #2ecc71;
 	color: #114427;
 }
 
-.mute-button.active {
+.mute-button.enabled {
 	background-color: #f47669;
 	color: #4f1914;
 }
