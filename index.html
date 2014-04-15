@@ -25,17 +25,17 @@
 				<div class="v-align">
 					<div class="equalizers">
 						<div class="eq_low">
-							<input class="knob" data-angleArc="300" data-angleOffset="-150" value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor="true" data-displayInput="false" data-bgColor="#555" data-fgColor="#3498db">
+							<input class="knob" data-angleArc="300" data-angleOffset="-150" value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor="true" data-displayInput="false" data-bgColor="#555" data-fgColor="#3498db" data-track="{{:num}}">
 							<label>L</label>
 						</div>
 
 						<div class="eq_med">
-							<input class="knob" data-angleArc="300" data-angleOffset="-150" value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor="true" data-displayInput="false" data-bgColor="#555" data-fgColor="#3498db">
+							<input class="knob" data-angleArc="300" data-angleOffset="-150" value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor="true" data-displayInput="false" data-bgColor="#555" data-fgColor="#3498db" data-track="{{:num}}">
 							<label>M</label>
 						</div>
 
 						<div class="eq_high">
-							<input class="knob" data-angleArc="300" data-angleOffset="-150" value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor="true" data-displayInput="false" data-bgColor="#555" data-fgColor="#3498db">
+							<input class="knob" data-angleArc="300" data-angleOffset="-150" value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor="true" data-displayInput="false" data-bgColor="#555" data-fgColor="#3498db" data-track="{{:num}}">
 							<label>H</label>
 						</div>
 					</div>
@@ -43,13 +43,13 @@
 					<div class="volume-balance">
 						<div class="balance">
 							<label>L</label>
-							<input type="range" min="-10" max="10" value="0" name="volume">
+							<input type="range" min="0" max="10" value="5" data-track="{{:num}}" name="panning">
 							<label>R</label>
 						</div>
 
 						<div class="volume">
 							<img src="img/vol-min.png" alt="" width="11" height="18">
-							<input type="range" min="0" max="10" value="5" name="volume">
+							<input type="range" min="-10" max="10" value="0" data-track="{{:num}}" name="volume">
 							<img src="img/vol-max.png" alt="" width="24" height="18">
 						</div>
 					</div>
@@ -75,7 +75,7 @@
 	<footer>
 		<div id="master-volume">
 			<img src="img/vol-min.png" alt="" width="11" height="18">
-			<input type="range" min="0" max="100" value="10" id="master-volume-slider" name="master-volume-slider">
+			<input type="range" min="-10" max="10" value="0" id="master-volume-slider" name="master-volume-slider">
 			<img src="img/vol-max.png" alt="" width="24" height="18">
 		</div>
 
@@ -235,7 +235,7 @@
 				}
 			});
 
-			// Setup the mute/solo buttons.
+			// Setup the mute buttons.
 			$(".mute-button").click(function() {
 				var elem = $(this);
 				var num = elem.attr("data-track");
@@ -252,7 +252,7 @@
 				}
 			});
 
-			// TODO: I'm not certain this is entirely efficient, but it works.
+			// Setup the solo buttons.
 			$(".solo-button").click(function() {
 				// Toggle the solo button.
 				var elem = $(this);
@@ -288,6 +288,24 @@
 					})
 				}
 			}) // $(".solo-button")
+
+			// Setup the left-right pan sliders.
+			$(".balance input").change(function() {
+				var elem = $(this);
+				var num = elem.attr("data-track");
+				var val = elem.val();
+
+				websocket.send("/track" + num + "/pan " + val/10.0);
+			});
+
+			// Setup the individual volume sliders.
+			$(".volume input").change(function() {
+				var elem = $(this);
+				var num = elem.attr("data-track");
+				var val = elem.val();
+
+				websocket.send("/track" + num + "/vol " + val/10.0);
+			});
 
 			// If there are any pre-muted tracks (in tracks.json), mute them.
 			// This can be expanded to perform other saved EQ operations in the future.
