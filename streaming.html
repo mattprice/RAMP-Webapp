@@ -15,7 +15,7 @@
             document.getElementById("output").appendChild(pre);
         };
 
-        function streamMusic() {
+        function connect() {
             try {
                 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.MozWebSocket;
                 context = new AudioContext();
@@ -34,6 +34,10 @@
 
             websocket.onopen = function() {
                 writeToScreen("Connected to the socket server.");
+
+                // Send OSC commands to the server.
+                websocket.send("/position 0.0f");
+                websocket.send("/master/vol -0.98f");
             };
 
             websocket.onclose = function() {
@@ -57,6 +61,10 @@
                     }
                 }
 
+                if ( nextTime == 0 ) {
+                    console.log(intArray);
+                }
+
                 // Create a new AudioBuffer.
                 var source = context.createBufferSource();
                 var buffer = context.createBuffer(2, leftChannel.length, 48000);
@@ -74,12 +82,21 @@
                 writeToScreen('<span style="color: red;">ERROR:</span> ' + error);
             };
         }
+
+        function play() {
+            websocket.send("/play");
+        }
+
+        function pause() {
+            websocket.send("/pause");
+        }
     </script>
 </head>
 <body>
     <h2>RAMP Streaming Test</h2>
-    <button id="send" onClick="javascript: streamMusic();">Stream Music</button>
-    <!-- <button id="send" onClick="javascript: source.stop(0);">Stop</button> -->
+    <button id="send" onClick="javascript: connect();">Connect</button>
+    <button id="send" onClick="javascript: play();">Play</button>
+    <button id="send" onClick="javascript: pause();">Pause</button>
     <div id="output"></div>
 </body>
 </html>

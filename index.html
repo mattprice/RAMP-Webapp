@@ -90,6 +90,69 @@
 	</footer>
 
 	<script type="text/javascript">
+		var websocket = null, context;
+		var nextTime = 0;
+
+		try {
+			window.AudioContext = window.AudioContext || window.webkitAudioContext || window.MozWebSocket;
+			context = new AudioContext();
+		} catch(e) {
+			// TODO: This needs to be displayed to the user somewhere.
+			console.log("Web Audio API is not supported in this browser.");
+		}
+
+		var socketURL = "127.0.0.1:8080";
+		// var socketURL = "ramp-server.embercode.com";
+
+		function connectWebsocket() {
+			// Connect to the websocket.
+			console.log("Beginning socket connection.");
+			websocket = new WebSocket("ws://" + socketURL + "/stream");
+			websocket.binaryType = "arraybuffer";
+
+			websocket.onopen = function() {
+				console.log("Connected to the socket server.");
+
+				// Prepare the server for streaming.
+				websocket.send("/position 0.0f");
+				websocket.send("/master/vol -0.98f");
+			}
+
+			websocket.onclose = function() {
+				console.log("Disconnected from the socket server.");
+			};
+
+			// NOTE: You can apparently do typeof message.data == "string".
+			websocket.onmessage = function(message) {
+				var leftChannel = [], rightChannel = [];
+
+				// Convert the message data so that each value is between -1 and 1.
+				var intArray = new Int16Array(message.data);
+				for (var i = 0; i < intArray.length; i++) {
+					var val = (intArray[i] > 0) ? intArray[i]/32767 : intArray[i]/32768;
+
+					// De-interleave the channels.
+					if (i % 2 == 0) {
+						leftChannel.push(val);
+					} else {
+						rightChannel.push(val);
+					}
+				}
+
+				// Create a new AudioBuffer.
+				var source = context.createBufferSource();
+				var buffer = context.createBuffer(2, leftChannel.length, 48000);
+				buffer.getChannelData(0).set(leftChannel);
+				buffer.getChannelData(1).set(rightChannel);
+				source.buffer = buffer;
+				source.connect(context.destination);
+
+				// Schedule the AudioBuffer for playback.
+				source.start(nextTime);
+				nextTime += buffer.duration;
+			}
+		}
+
 		// If RAMP is being loaded from file://, fall back to the remote copy of
 		// tracks.json. Chrome won't load the local copy due to security concerns.
 		var trackURL;
@@ -198,14 +261,20 @@
 			if (elem.attr("data-status") == "playing") {
 				elem.attr("src", "img/play.png");
 				elem.attr("data-status", "paused");
+
+				websocket.send("/pause");
 			}
 
 			// Swapping from Pause to Play.
 			else {
 				elem.attr("src", "img/pause.png");
 				elem.attr("data-status", "playing");
+
+				websocket.send("/play");
 			}
 		});
+
+		connectWebsocket();
 	</script>
 </body>
 </html>
