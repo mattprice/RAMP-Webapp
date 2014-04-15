@@ -25,17 +25,17 @@
 				<div class="v-align">
 					<div class="equalizers">
 						<div class="eq_low">
-							<input class="knob" data-angleArc="300" data-angleOffset="-150" value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor="true" data-displayInput="false" data-bgColor="#555" data-fgColor="#3498db" data-track="{{:num}}">
+							<input class="knob" value="0" data-track="{{:num}}">
 							<label>L</label>
 						</div>
 
 						<div class="eq_med">
-							<input class="knob" data-angleArc="300" data-angleOffset="-150" value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor="true" data-displayInput="false" data-bgColor="#555" data-fgColor="#3498db" data-track="{{:num}}">
+							<input class="knob" value="0" data-track="{{:num}}">
 							<label>M</label>
 						</div>
 
 						<div class="eq_high">
-							<input class="knob" data-angleArc="300" data-angleOffset="-150" value="0" data-max="100" data-min="-100" data-width="35" data-height="35" data-thickness=".45" data-cursor="true" data-displayInput="false" data-bgColor="#555" data-fgColor="#3498db" data-track="{{:num}}">
+							<input class="knob" value="0" data-track="{{:num}}">
 							<label>H</label>
 						</div>
 					</div>
@@ -211,20 +211,31 @@
 
 			// Render the knobs.
 			$(".knob").knob({
-				change : function (value) {
-					//console.log("change : " + value);
+				angleArc:     300,
+				angleOffset:  -150,
+				max:          100,
+				min:          -100,
+				width:        35,
+				height:       35,
+				thickness:    .45,
+				cursor:       true,
+				displayInput: false,
+				bgColor:      "#555",
+				fgColor:      "#3498db",
+
+				change: function (value) {
+					console.log("change: " + value);
 				},
-				release : function (value) {
-					//console.log(this.$.attr('value'));
-					console.log("release : " + value);
+				release: function (value) {
+					// console.log("release: " + value);
 				},
-				cancel : function () {
-					console.log("cancel : ", this);
+				cancel: function () {
+					console.log("cancel: ", value);
 				},
 				/*format : function (value) {
 					return value + '%';
 				},*/
-				draw : function () {
+				draw: function () {
 					this.cursorExt = 0.25;
 
 					var a = this.arc(this.cv)  // Arc
