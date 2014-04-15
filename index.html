@@ -25,17 +25,17 @@
 				<div class="v-align">
 					<div class="equalizers">
 						<div class="eq_low">
-							<input class="knob" value="0" data-track="{{:num}}">
+							<input class="knob" value="0" data-freq="low" data-track="{{:num}}">
 							<label>L</label>
 						</div>
 
 						<div class="eq_med">
-							<input class="knob" value="0" data-track="{{:num}}">
+							<input class="knob" value="0" data-freq="med" data-track="{{:num}}">
 							<label>M</label>
 						</div>
 
 						<div class="eq_high">
-							<input class="knob" value="0" data-track="{{:num}}">
+							<input class="knob" value="0" data-freq="high" data-track="{{:num}}">
 							<label>H</label>
 						</div>
 					</div>
@@ -223,18 +223,18 @@
 				bgColor:      "#555",
 				fgColor:      "#3498db",
 
-				change: function (value) {
-					console.log("change: " + value);
+				change: function(value) {
+					var elem = this.$;
+					var num = elem.attr("data-track");
+					var freq = elem.attr("data-freq");
+
+					console.log("/track" + num + "/" + freq + " " + value);
+					websocket.send("/track" + num + "/" + freq + " " + value);
 				},
-				release: function (value) {
-					// console.log("release: " + value);
+				cancel: function() {
+					// TODO: Need to grab the current value and resend if canceled.
+					// console.log("cancel: ");
 				},
-				cancel: function () {
-					console.log("cancel: ", value);
-				},
-				/*format : function (value) {
-					return value + '%';
-				},*/
 				draw: function () {
 					this.cursorExt = 0.25;
 
