@@ -57,6 +57,7 @@
        "name": "Organ 1",
        "file": "ORGAN1.wav",
        "length": 49.344,
+       "muted": true,
        "waveform_path": "img/waveforms/ORGAN1.png"
     },
 
@@ -65,6 +66,7 @@
        "name": "Organ 2",
        "file": "ORGAN2.wav",
        "length": 45.344,
+       "muted": true,
        "waveform_path": "img/waveforms/ORGAN2.png"
     },
 
@@ -73,6 +75,7 @@
        "name": "Electric Piano",
        "file": "EPIANO.wav",
        "length": 52,
+       "muted": true,
        "waveform_path": "img/waveforms/EPIANO.png"
     },
 
@@ -81,6 +84,7 @@
        "name": "Synthesizer 1",
        "file": "SYNTH1.wav",
        "length": 44,
+       "muted": true,
        "waveform_path": "img/waveforms/SYNTH1.png"
     },
 
@@ -89,6 +93,7 @@
        "name": "Synthesizer 2",
        "file": "SYNTH2.wav",
        "length": 52,
+       "muted": true,
        "waveform_path": "img/waveforms/SYNTH2.png"
     }
   ]

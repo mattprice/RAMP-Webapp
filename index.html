@@ -185,12 +185,16 @@
 			document.title = "RAMP - " + songTitle;
 
 			// Render the track controls.
+			// NOTE: The #track-controls default to display:none so the page can
+			//       fail gracefully if the track list fails to load.
 			var controlsTemplate = $.templates($("#track-controls").html());
 			$("#track-controls").html(
 				controlsTemplate.render(trackList["tracks"])
 			).css("display", "block");
 
 			// Render the track waveforms.
+			// NOTE: The #track-waveforms default to display:none so the page can
+			//       fail gracefully if the track list fails to load.
 			var waveformsTemplate = $.templates($("#track-waveforms").html());
 			$("#track-waveforms").html(
 				waveformsTemplate.render(trackList["tracks"], {
@@ -269,7 +273,7 @@
 				if ( $(".isSolo").length === 0 ) {
 					$(".waveform").each(function() {
 						$(this).removeClass("notSolo");
-					});
+					})
 				}
 
 				// Otherwise, visually disable all other tracks.
@@ -281,9 +285,18 @@
 						} else {
 							wf.removeClass("notSolo");
 						}
-					});
+					})
 				}
-			}); // $(".solo-button")
+			}) // $(".solo-button")
+
+			// If there are any pre-muted tracks (in tracks.json), mute them.
+			// This can be expanded to perform other saved EQ operations in the future.
+			var tracks = trackList["tracks"];
+			tracks.forEach(function(track) {
+				if (track.muted) {
+					$(".mute-button[data-track=" + track.num + "]").click();
+				}
+			});
 
 		}); // $.getJSON()
 
