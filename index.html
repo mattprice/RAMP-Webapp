@@ -55,8 +55,8 @@
 					</div>
 
 					<div class="mute-solo">
-						<button class="mute-button">M</button>
-						<button class="solo-button">S</button>
+						<button class="mute-button" data-track="{{:num}}">M</button>
+						<button class="solo-button" data-track="{{:num}}">S</button>
 					</div>
 				</div> <!-- .v-align -->
 
@@ -231,10 +231,43 @@
 				}
 			});
 
-			// Toggle mute/solo buttons when clicked.
-			$(".mute-button, .solo-button").click(function() {
+			// Setup the mute/solo buttons.
+			$(".mute-button").click(function() {
+				// Toggle the mute button.
 				var elem = $(this);
 				elem.toggleClass("active");
+
+				// "Disable" the waveform.
+				var num = elem.attr("data-track");
+				$("#track-" + num + " img").toggleClass("isMuted");
+			});
+
+			// TODO: I'm not certain this is entirely efficient, but it works.
+			$(".solo-button").click(function() {
+				// Toggle the solo button.
+				var elem = $(this);
+				elem.toggleClass("active");
+
+				// Mark this waveform as not-to-be-disabled.
+				var num = elem.attr("data-track");
+				$("#track-" + num + " img").toggleClass("isSolo");
+
+				// Disable all other tracks.
+				$(".waveform").each(function() {
+					var wf = $(this);
+					if ( !wf.hasClass("isSolo") ) {
+						wf.addClass("notSolo");
+					} else {
+						wf.removeClass("notSolo");
+					}
+				});
+
+				// If there are no more soloed tracks, re-enable everything.
+				if ( $(".isSolo").length === 0 ) {
+					$(".waveform").each(function() {
+						$(this).removeClass("notSolo");
+					});
+				}
 			});
 		});
 

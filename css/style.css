@@ -254,6 +254,11 @@ nav li a:hover {
 	box-shadow: 0 0 2px 0 #888;
 }
 
+.isMuted,
+.notSolo {
+	background-color: rgba(0,0,0,.10) !important;
+}
+
 /* Waveform Colors */
 .wf-green {
 	background-color: rgba(46,204,113,.50);
