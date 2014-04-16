@@ -5,6 +5,7 @@
 var websocket = null;
 var context = null;
 var nextTime = 0;
+var scrubberLength = 0;
 
 var socketURL = "127.0.0.1:8080";
 // var socketURL = "ramp-server.embercode.com";
@@ -58,8 +59,8 @@ websocket.onopen = function() {
   $("#status").hide();
 
   // Prepare the server for streaming.
-  websocket.send("/position 0.0f");
-  websocket.send("/master/vol -0.98f");
+  // websocket.send("/position 0.0f");
+  // websocket.send("/master/vol -0.98f");
 }
 
 websocket.onclose = function() {
@@ -67,13 +68,14 @@ websocket.onclose = function() {
   // This also gets called if the server fails to connect.
   console.log("Disconnected from the socket server.");
 
-  if ( $("#status").is( ":hidden" ) ) {
+  if ( $("#status").is(":hidden") ) {
     $("#status").html("Server Disconnected");
     $("#status").show();
 
     $("footer").hide();
     $("#track-controls").hide();
     $("#track-waveforms").hide();
+    $("#track-position").hide();
   } else {
     $("#status").html("Connection Failed");
   }
@@ -107,6 +109,13 @@ websocket.onmessage = function(message) {
   // Schedule the AudioBuffer for playback.
   source.start(nextTime);
   nextTime += buffer.duration;
+
+  // Move the scrubber.
+  if ($("#master-play input").attr("data-status") == "playing") {
+    $("#track-position").val(function(index, value) {
+      return buffer.duration /  songLength * scrubberLength + value*1.0;
+    });
+  }
 }
 
 /**
@@ -117,6 +126,9 @@ function loadInterface() {
   // Request the track information (in JSON format) from the webserver.
   // This will eventually get requested from the RAMP Server instead.
   $.getJSON(trackURL, function(trackList) {
+    scrubberLength = trackList["length"] * 30;
+    songLength = trackList["length"];
+
     // Render the song title.
     var songTitle = $.templates("{{:title}}").render(trackList);
     $("h1").html(songTitle);
@@ -148,6 +160,26 @@ function loadInterface() {
         }
       })
     ).css("display", "block");
+
+    $(".track").each(function() {
+      $(this).css("width", scrubberLength);
+    });
+
+    /**
+     * Track Scrubber
+     */
+
+    // Set the correct scrubber width and number of steps.
+    $("#track-position").css("width", scrubberLength);
+    $("#track-position").attr("max", scrubberLength*1.65);
+    $("#track-position").css("display", "inline");
+
+    $("#track-position").change(function() {
+      var elem = $(this);
+      var val = elem.val() / scrubberLength;
+
+      websocket.send("/position " + val);
+    });
 
     /**
     * Low, Medium, High Knobs

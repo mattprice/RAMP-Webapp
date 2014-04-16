@@ -136,6 +136,10 @@ nav li a:hover {
 	background: linear-gradient(to bottom, rgb(131,131,131) 0%, rgb(104,104,104) 100%); /* W3C */
 }
 
+.mixer:first-child {
+	margin-top: 20px; /* Same as #track-position */
+}
+
 .mixer:last-child {
 	border-bottom: none;
 }
@@ -239,8 +243,13 @@ nav li a:hover {
 
 #track-waveforms {
 	margin-left: 475px;
-	padding-top: 15px;
 	width: 100%;
+}
+
+#track-position {
+	display: none;
+	margin-top: 20px;
+	margin-left: 490px; /* Width of #track-waveforms + left padding of .waveform */
 }
 
 .track {
