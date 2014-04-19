@@ -112,7 +112,7 @@ websocket.onmessage = function(message) {
 
   // Move the scrubber.
   if ($("#master-play input").attr("data-status") == "playing") {
-    $("#track-position").val(function(index, value) {
+    $("#track-position input").val(function(index, value) {
       return buffer.duration /  songLength * scrubberLength + value*1.0;
     });
   }
@@ -170,13 +170,13 @@ function loadInterface() {
      */
 
     // Set the correct scrubber width and number of steps.
-    $("#track-position").css("width", scrubberLength);
-    $("#track-position").attr("max", scrubberLength*1.65);
-    $("#track-position").css("display", "inline");
+    $("#track-position input").css("width", scrubberLength);
+    $("#track-position input").attr("max", scrubberLength*1.65);
+    $("#track-position").css("display", "inline-block");
 
-    $("#track-position").change(function() {
+    $("#track-position input").change(function() {
       var elem = $(this);
-      var val = elem.val() / scrubberLength;
+      var val = elem.val() / scrubberLength*1.65;
 
       websocket.send("/position " + val);
     });
@@ -342,6 +342,7 @@ function loadInterface() {
         websocket.send("/play");
       }
     });
+
     $("footer").css("opacity", 1);
 
     /**

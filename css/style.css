@@ -78,7 +78,6 @@ header {
 	background: -o-linear-gradient(top, rgb(80,80,81) 0%,rgb(59,59,59) 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top, rgb(80,80,81) 0%,rgb(59,59,59) 100%); /* IE10+ */
 	background: linear-gradient(to bottom, rgb(80,80,81) 0%,rgb(59,59,59) 100%); /* W3C */
-	background-color: #ccc;
 	box-shadow: 1px 0 2px 2px #222;
 	text-align: center;
 }
@@ -248,8 +247,22 @@ nav li a:hover {
 
 #track-position {
 	display: none;
-	margin-top: 20px;
-	margin-left: 490px; /* Width of #track-waveforms + left padding of .waveform */
+	margin-top: 10px;
+	margin-bottom: -4px;
+	margin-left: 475px; /* Width of #track-waveforms */
+	padding: 5px 11px;
+	border-bottom: 1px solid rgb(85,85,85);
+	background: rgb(100,100,100);
+	background: -moz-linear-gradient(top, rgb(159,159,159) 0%, rgb(100,100,100) 100%); /* FF3.6+ */
+	background: -webkit-linear-gradient(top, rgb(159,159,159) 0%,rgb(100,100,100) 100%); /* Chrome10+, Safari5.1+ */
+	background: -o-linear-gradient(top, rgb(159,159,159) 0%,rgb(100,100,100) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgb(159,159,159) 0%,rgb(100,100,100) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgb(159,159,159) 0%,rgb(100,100,100) 100%); /* W3C */
+	vertical-align: middle;
+}
+
+#track-position input {
+	margin: 0;
 }
 
 .track {
@@ -265,7 +278,7 @@ nav li a:hover {
 }
 
 .waveform {
-	padding: 15px 5px 5px 5px;
+	padding: 15px 0px 5px 0px;
 	height: 53px;
 	border: 1px solid rgba(0,0,0,.25);
 	border-radius: 10px;
