@@ -154,6 +154,14 @@ function loadInterface() {
           // Assigns a different background color to each waveform.
           return waveformStyles[num % waveformStyles.length];
         },
+        waveformOffset:function(offset) {
+          // Returns the offset (in seconds) * 30px
+          if (offset) {
+            return offset * 30;
+          } else {
+            return 0;
+          }
+        },
         waveformWidth:function(length) {
           // Returns the image width: length (in seconds) * 30px
           return length * 30;
