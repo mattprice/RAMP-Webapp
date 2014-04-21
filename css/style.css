@@ -252,12 +252,7 @@ nav li a:hover {
 	margin-left: 475px; /* Width of #track-waveforms */
 	padding: 5px 11px;
 	border-bottom: 1px solid rgb(85,85,85);
-	background: rgb(100,100,100);
-	background: -moz-linear-gradient(top, rgb(159,159,159) 0%, rgb(100,100,100) 100%); /* FF3.6+ */
-	background: -webkit-linear-gradient(top, rgb(159,159,159) 0%,rgb(100,100,100) 100%); /* Chrome10+, Safari5.1+ */
-	background: -o-linear-gradient(top, rgb(159,159,159) 0%,rgb(100,100,100) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, rgb(159,159,159) 0%,rgb(100,100,100) 100%); /* IE10+ */
-	background: linear-gradient(to bottom, rgb(159,159,159) 0%,rgb(100,100,100) 100%); /* W3C */
+	background: rgb(150,150,150) url('../img/timestamp.png') bottom right 12px repeat-x;
 	vertical-align: middle;
 }
 
