@@ -40,7 +40,11 @@ try {
 }
 
 try {
-  window.AudioContext = window.AudioContext || window.webkitAudioContext || window.MozWebSocket;
+  window.AudioContext = window.AudioContext
+                     || window.webkitAudioContext
+                     || window.mozAudioContext
+                     || window.oAudioContext
+                     || window.msAudioContext;
   context = new AudioContext();
 } catch(e) {
   // TODO: This needs to be displayed to the user somewhere.
@@ -57,6 +61,7 @@ websocket.onopen = function() {
   // Load the interface.
   loadInterface();
   $("#status").hide();
+  $("#status").html("Connected");
 
   // Prepare the server for streaming.
   // websocket.send("/position 0.0f");
@@ -68,7 +73,9 @@ websocket.onclose = function() {
   // This also gets called if the server fails to connect.
   console.log("Disconnected from the socket server.");
 
-  if ( $("#status").is(":hidden") ) {
+  console.log($("#status").html());
+
+  if ( $("#status").html() === "Connected" ) {
     $("#status").html("Server Disconnected");
     $("#status").show();
 
@@ -76,8 +83,8 @@ websocket.onclose = function() {
     $("#track-controls").hide();
     $("#track-waveforms").hide();
     $("#track-position").hide();
-  } else {
-    $("#status").html("Connection Failed");
+  } else if ( $("#status").html() == "Connecting…" ) {
+      $("#status").html("Connection Failed");
   }
 };
 
