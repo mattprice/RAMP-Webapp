@@ -2,6 +2,8 @@
 
 A web-based client application for connecting to a [RAMP server](https://github.com/mattprice/RAMP-Server), adjusting equalizer functions, and then listening to the results, which are streamed back from the server in realtime.
 
+![RAMP Screenshot](screenshot.png)
+
 ## Generating Waveforms
 
 Waveforms can be generated with the [Waveform Ruby gem](https://github.com/benalavi/waveform) using the following command, where WIDTH should be equal to the track length (in seconds) multiplied by 30 (pixels):
